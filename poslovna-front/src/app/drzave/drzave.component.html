@@ -1,3 +1,13 @@
-<p>
-  drzave works!
-</p>
+<a class="list-group-item clearfix" *ngFor="let drzaveShow of drzave">
+  <div class="pull-left">
+    <h1 class="list-group-item-heading" > Sifra : {{drzaveShow.sifra_drzave}}</h1>
+    <h2 class="list-group-item-heading" > Naziv : {{drzaveShow.naziv}}</h2>
+    <h2 class="list-group-item-heading" > Naseljeno mesto: {{drzaveShow.naseljenoMesto}}</h2> 
+    <span class="pull-right"> 
+     
+    </span>
+  </div>
+</a>
+
+
+

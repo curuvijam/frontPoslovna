@@ -28,13 +28,13 @@ export class DrzaveService {
     return this.http.get<Drzava>(this.url + '/' + id);
   }
 
-  insertKategorija(kategorija: NovaDrzava): Observable<NovaDrzava> {
+  insertDrzava(kategorija: NovaDrzava): Observable<NovaDrzava> {
     return this.http.post<NovaDrzava>(this.url, kategorija, httpOptions).pipe(
       catchError(this.handleError<NovaDrzava>('insertDrzava'))
     );
   }
 
-  updateKategorija(kategorija: Drzava): Observable<Drzava> {
+  updateDrzava(kategorija: Drzava): Observable<Drzava> {
     const id = typeof kategorija === 'string' ? kategorija : kategorija.id;
     const url = `${this.url}/${id}`;
     return this.http.put<Drzava>(url, kategorija, httpOptions).pipe(
@@ -42,7 +42,7 @@ export class DrzaveService {
     );
   }
 
-  deleteKategorija(kategorija: Drzava | string): Observable<Drzava> {
+  deleteDrzava(kategorija: Drzava | string): Observable<Drzava> {
     const id = typeof kategorija === 'string' ? kategorija : kategorija.id;
     const url = `${this.url}/${id}`;
 

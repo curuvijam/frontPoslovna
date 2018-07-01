@@ -4,10 +4,12 @@
     <h2 class="list-group-item-heading" > Naziv : {{drzaveShow.naziv}}</h2>
     <h2 class="list-group-item-heading" > Naseljeno mesto: {{drzaveShow.naseljenoMesto}}</h2> 
     <span class="pull-right"> 
-     
+      <button class="button" [routerLink]="['/drzave/' + drzaveShow.id]">Izmeni</button>
+      <button class="button-danger" (click)="deleteDrzava(drzaveShow)">Obrisi</button>
     </span>
   </div>
 </a>
+<button class="button" routerLink="/drzave-edit">Dodaj drzavu</button>
 
 
 

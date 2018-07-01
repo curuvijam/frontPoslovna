@@ -3,9 +3,9 @@ import { NaseljenoMesto } from "./naseljeno-mesto";
 export class Drzava{
     constructor(
         public id: number,
-        public sifra_drzave: String,
+        public sifra_drzave: string,
         public naziv: string,
-        public naseljenoMesto: String
+        public naseljenoMesto: string
         
         
     ){}

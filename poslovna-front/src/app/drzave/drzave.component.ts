@@ -29,7 +29,7 @@ export class DrzaveComponent implements OnInit {
     }
 
     deleteDrzava(drzava: Drzava) {
-      this.drzaveService.deleteKategorija(drzava).subscribe();
+      this.drzaveService.deleteDrzava(drzava).subscribe();
       this.drzave = this.drzave.filter(k => k !== drzava);
     }
 

@@ -10,57 +10,54 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-
-
 @Injectable()
 export class DrzaveService {
-
   private url = 'http://localhost:8080/drzave';
 
-
-
-  
   getDrzave(): Observable<Drzava[]> {
     return this.http.get<Drzava[]>(this.url);
-
   }
   getDrzava(id: string): Observable<Drzava> {
     return this.http.get<Drzava>(this.url + '/' + id);
   }
 
+<<<<<<< HEAD
   insertDrzava(kategorija: NovaDrzava): Observable<NovaDrzava> {
     return this.http.post<NovaDrzava>(this.url, kategorija, httpOptions).pipe(
       catchError(this.handleError<NovaDrzava>('insertDrzava'))
     );
+=======
+  insertKategorija(kategorija: NovaDrzava): Observable<NovaDrzava> {
+    return this.http
+      .post<NovaDrzava>(this.url, kategorija, httpOptions)
+      .pipe(catchError(this.handleError<NovaDrzava>('insertDrzava')));
+>>>>>>> e0eb56ab4095dcec3c4c6670c6bf6a95ff7bf0db
   }
 
   updateDrzava(kategorija: Drzava): Observable<Drzava> {
     const id = typeof kategorija === 'string' ? kategorija : kategorija.id;
     const url = `${this.url}/${id}`;
-    return this.http.put<Drzava>(url, kategorija, httpOptions).pipe(
-      catchError(this.handleError<Drzava>('updateDrzava'))
-    );
+    return this.http
+      .put<Drzava>(url, kategorija, httpOptions)
+      .pipe(catchError(this.handleError<Drzava>('updateDrzava')));
   }
 
   deleteDrzava(kategorija: Drzava | string): Observable<Drzava> {
     const id = typeof kategorija === 'string' ? kategorija : kategorija.id;
     const url = `${this.url}/${id}`;
 
-    return this.http.delete<Drzava>(url, httpOptions).pipe(
-      catchError(this.handleError<Drzava>('deleteDrzava'))
-    );
+    return this.http
+      .delete<Drzava>(url, httpOptions)
+      .pipe(catchError(this.handleError<Drzava>('deleteDrzava')));
   }
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient) {}
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

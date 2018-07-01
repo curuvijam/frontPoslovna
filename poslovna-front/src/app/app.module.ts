@@ -1,3 +1,4 @@
+import { KlijentComponent } from './klijent/klijent.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -21,14 +22,14 @@ import { FormsModule } from '@angular/forms';
     DrzaveComponent,
     NaseljenaMestaComponent,
     DrzaveEditComponent,
-    NaseljenaMestaEditComponent
+    NaseljenaMestaEditComponent,
+    KlijentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    
   ],
   providers: [
     DrzaveService,

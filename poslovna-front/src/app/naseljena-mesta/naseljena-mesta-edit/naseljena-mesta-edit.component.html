@@ -1,3 +1,50 @@
-<p>
-  naseljena-mesta-edit works!
-</p>
+<div class="row" *ngIf="!naseljenoMestoEdit">
+  <h1>Dodavanje novog naseljenogmesta</h1>
+<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <form #novoNaseljenoMestoForm="ngForm" (ngSubmit)="novoNaseljenoMestoSubmit(novoNaseljenoMestoForm)">
+        <div class="form-group">
+            <label for="sifra_mesta">Sifra mesta</label>
+            <input type="text" id="sifra_drzave" name="sifra_mesta" class="form-control" required ngModel #mestoSifra="ngModel">
+          </div>
+      <div class="form-group">
+        <label for="naziv">Naziv mesta</label>
+        <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #mestoNaziv="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="ptt_oznaka">Ptt oznaka</label>
+        <input type="text" id="ptt_oznaka" name="ptt_oznaka" class="form-control" required ngModel #mestoPtt="ngModel">
+      </div>
+
+      <button type="submit" class="button" [disabled]="!novoNaseljenoMestoForm.valid">Dodaj</button>
+</form>
+</div>
+</div>
+
+
+<div class="row" *ngIf="naseljenoMestoEdit">
+<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+<h1>Uredjivanje naseljenog mesta</h1>
+<form #editNasljenoMestoForm="ngForm" (ngSubmit)="naseljenoMestoEdt()">
+    <div class="form-group">
+        <label for="naziv">Sifra mesta</label>
+        <input type="text" id="sifra" name="sifra" class="form-control" required ngModel #drzavaSifra="ngModel" [(ngModel)]="naseljenoMestoEdit.sifra_mesta">
+        <span class="help-block" *ngIf="!drzavaSifra.valid && drzavaSifra.touched">Sifra mesta je obavezna!</span>
+      </div>
+    
+  <div class="form-group">
+    <label for="naziv">Naziv mesta</label>
+    <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #dzavaNaziv="ngModel" [(ngModel)]="naseljenoMestoEdit.naziv">
+    <span class="help-block" *ngIf="!dzavaNaziv.valid && dzavaNaziv.touched">Naziv mesta je obavezan!</span>
+  </div>
+
+  <div class="form-group">
+    <label for="naziv">Ptt oznaka</label>
+    <input type="text" id="oznaka" name="oznaka" class="form-control" required ngModel #mestoOznaka="ngModel" [(ngModel)]="naseljenoMestoEdit.ptt_oznaka">
+    <span class="help-block" *ngIf="!mestoOznaka.valid && mestoOznaka.touched">Oznaka mesta je obavezna!</span>
+  </div>
+
+  <button type="submit" class="button" [disabled]="!editNasljenoMestoForm.valid">Izmeni</button>
+</form>
+</div>
+</div>

@@ -1,8 +1,8 @@
 export class NovoNaseljenoMesto{
     constructor(
-        public sifra_mesta: String,
+        public sifra_mesta: string,
         public naziv: string,
-        public ptt_ozaka: string
+        public ptt_oznaka: string
     
     ){}
 }

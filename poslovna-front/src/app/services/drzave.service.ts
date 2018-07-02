@@ -21,17 +21,10 @@ export class DrzaveService {
     return this.http.get<Drzava>(this.url + '/' + id);
   }
 
-<<<<<<< HEAD
   insertDrzava(kategorija: NovaDrzava): Observable<NovaDrzava> {
     return this.http.post<NovaDrzava>(this.url, kategorija, httpOptions).pipe(
       catchError(this.handleError<NovaDrzava>('insertDrzava'))
     );
-=======
-  insertKategorija(kategorija: NovaDrzava): Observable<NovaDrzava> {
-    return this.http
-      .post<NovaDrzava>(this.url, kategorija, httpOptions)
-      .pipe(catchError(this.handleError<NovaDrzava>('insertDrzava')));
->>>>>>> e0eb56ab4095dcec3c4c6670c6bf6a95ff7bf0db
   }
 
   updateDrzava(kategorija: Drzava): Observable<Drzava> {

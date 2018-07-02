@@ -3,7 +3,7 @@ export class NaseljenoMesto{
         public id: number,
         public sifra_mesta: String,
         public naziv: string,
-        public ptt_ozaka: string
+        public ptt_oznaka: string
     
     ){}
 }

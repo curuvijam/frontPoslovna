@@ -36,7 +36,7 @@ export class NaseljenaMestaService {
 
   updateNaseljenoMesto(nasm: NaseljenoMesto): Observable<NaseljenoMesto> {
     const id = typeof nasm === 'string' ? nasm : nasm.id;
-    const url = `${this.url}/${id}`;
+    const url = `${this.url1}/${id}`;
     return this.http.put<NaseljenoMesto>(url, nasm, httpOptions).pipe(
       catchError(this.handleError<NaseljenoMesto>('updateNaseljenoMesto'))
     );
@@ -44,7 +44,7 @@ export class NaseljenaMestaService {
 
   deleteNaseljenoMesto(nasm: NaseljenoMesto | string): Observable<NaseljenoMesto> {
     const id = typeof nasm === 'string' ? nasm : nasm.id;
-    const url = `${this.url}/${id}`;
+    const url = `${this.url1}/${id}`;
 
     return this.http.delete<NaseljenoMesto>(url, httpOptions).pipe(
       catchError(this.handleError<NaseljenoMesto>('deleteNaseljenoMesto'))

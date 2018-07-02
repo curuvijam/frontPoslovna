@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NaseljenaMestaService } from '../services/naseljena-mesta.service';
 import { Location } from '@angular/common';
 import { NaseljenoMesto } from '../modeli/naseljeno-mesto';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+
 
 @Component({
   selector: 'app-naseljena-mesta',
@@ -17,6 +19,8 @@ export class NaseljenaMestaComponent implements OnInit {
   naseljenaMesta: NaseljenoMesto[];
   naseljenoMestoId: string;
   naseljenaMestaEdit: NaseljenoMesto;
+  drzavaId: string;
+
 
   getNaseljenaMesta(): void {
     this.naseljenaMestaService.getNaseljenaMesta()
@@ -36,11 +40,22 @@ export class NaseljenaMestaComponent implements OnInit {
 
 
   constructor(private naseljenaMestaService: NaseljenaMestaService,
-              private location: Location) { }
+              private location: Location,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+     if (this.route.snapshot.params['drzavaId']) {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.drzavaId = params['drzavaId'];
+      }
+    
+    );
     this.getNaseljenaMesta();
 
   }
+  this.getNaseljenaMesta();
+
+}
 
 }

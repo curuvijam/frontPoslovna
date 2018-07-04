@@ -16,8 +16,10 @@ const routes: Routes = [
   { path: 'drzave', component: DrzaveComponent },
   { path: 'naseljenaMesta', component: NaseljenaMestaComponent},
   { path: 'klijent', component: KlijentComponent},
-  { path: 'naseljena-mesta-edit/:drzavaId', component: NaseljenaMestaEditComponent },
-  { path: 'naseljena-mesta/drzave/:drzavaId', component: NaseljenaMestaComponent },
+  { path: 'drzave/naseljena-mesta/:naseljenoMestoId', component: DrzaveComponent },
+  { path: 'drzave-edit/:naseljenoMestoId', component: DrzaveEditComponent},
+  {path: 'drzave-edit', component: DrzaveEditComponent}
+
 ];
 
 @NgModule({

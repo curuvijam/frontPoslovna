@@ -5,8 +5,6 @@ export class Drzava{
         public id: number,
         public sifra_drzave: string,
         public naziv: string,
-        public naseljenoMesto: string
-        
         
     ){}
 }

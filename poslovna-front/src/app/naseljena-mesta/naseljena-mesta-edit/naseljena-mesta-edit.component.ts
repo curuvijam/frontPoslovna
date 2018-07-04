@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 import { NaseljenaMestaService } from '../../services/naseljena-mesta.service';
 import { NovoNaseljenoMesto } from '../../modeli/novo-naseljeno-mesto';
 import { NaseljenoMesto } from '../../modeli/naseljeno-mesto';
@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { DrzaveService } from '../../services/drzave.service';
+import { Drzava } from '../../modeli/drzava';
 
 @Component({
   selector: 'app-naseljena-mesta-edit',
@@ -19,7 +20,9 @@ export class NaseljenaMestaEditComponent implements OnInit {
   naseljenoMestoEdit: NaseljenoMesto;
   naseljenaMesta: NaseljenoMesto[];
   drzavaId: string;
-
+  @Input() drzaveShow: Drzava;
+  drzave: Drzava[];
+  drzavaEdit: Drzava;
 
   constructor(private naseljenaMestaService: NaseljenaMestaService,
               private drzaveService: DrzaveService,
@@ -39,7 +42,7 @@ export class NaseljenaMestaEditComponent implements OnInit {
     this.novoNaslejenoMesto.naziv = forma.value.naziv;
     this.novoNaslejenoMesto.ptt_oznaka = forma.value.ptt_oznaka;
    
-    this.naseljenaMestaService.insertNaseljenaMesta(this.novoNaslejenoMesto,this.drzavaId).subscribe();
+    this.naseljenaMestaService.insertNaseljenaMesta(this.novoNaslejenoMesto).subscribe();
     forma.reset();
     this.location.back();
   }
@@ -59,22 +62,29 @@ export class NaseljenaMestaEditComponent implements OnInit {
     this.location.back();
   }
 
+  getDrzave(): void {
+    this.drzaveService.getDrzave()
+      .subscribe(drzave => this.drzave = drzave);
+    
+  }
+
+  getDrzava() {
+    this.drzaveService.getDrzava(this.drzavaId).subscribe(
+      (drzava) => this.drzavaEdit = drzava
+    );
+  }
 
   ngOnInit() {
-    if (this.route.snapshot.url[0].path === 'naseljena-mesta') {
+    if(this.route.snapshot.params['naseljenoMestoId']){
       this.route.params.subscribe(
         (params: Params) => {
-          this.naseljenoMestoId = params['naseljenoMestoId'];
+          this.naseljenoMestoId = params["naseljenoMestoId"];
         }
       );
       this.getNaseljenoMesto();
-    } else if (this.route.snapshot.url[0].path === 'naseljena-mesta-edit') {
-      this.route.params.subscribe(
-        (params: Params) => {
-          this.drzavaId = params['drzavaId'];
-        }
-      );
-    }
+  
+    }  
+    this.getDrzave();
   }
 
 }

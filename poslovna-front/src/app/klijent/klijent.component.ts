@@ -1,3 +1,4 @@
+import { KlijentService } from './klijent.service';
 import { KlijentFizicko } from './klijent-fizicko';
 import { KlijentPravno } from './klijent-pravno';
 import { Component, OnInit } from '@angular/core';
@@ -14,13 +15,21 @@ export class KlijentComponent implements OnInit {
   switch = true;
   loading: boolean;
 
-  constructor() { }
+  constructor(private klijentService: KlijentService) { }
 
   ngOnInit() {
   }
 
   toggle() {
     this.switch = !this.switch;
+  }
+
+  dodajFizicko() {
+    this.klijentService.addFizickoLice(this.klijentFizicko).subscribe();
+  }
+
+  dodajPravno() {
+    this.klijentService.addPravnoLice(this.klijentPravno).subscribe();
   }
 
 }

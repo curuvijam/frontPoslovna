@@ -1,3 +1,4 @@
+import { KlijentService } from './klijent/klijent.service';
 import { KlijentComponent } from './klijent/klijent.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -34,6 +35,7 @@ import { FormsModule } from '@angular/forms';
   providers: [
     DrzaveService,
     NaseljenaMestaService,
+    KlijentService
   ],
   bootstrap: [AppComponent]
 })

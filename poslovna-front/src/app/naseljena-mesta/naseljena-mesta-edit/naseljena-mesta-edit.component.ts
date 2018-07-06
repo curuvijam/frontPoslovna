@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 import { DrzaveService } from '../../services/drzave.service';
 import { Drzava } from '../../modeli/drzava';
 
+
 @Component({
   selector: 'app-naseljena-mesta-edit',
   templateUrl: './naseljena-mesta-edit.component.html',
@@ -15,7 +16,7 @@ import { Drzava } from '../../modeli/drzava';
 })
 export class NaseljenaMestaEditComponent implements OnInit {
 
-  novoNaslejenoMesto: NovoNaseljenoMesto = new NovoNaseljenoMesto("","","");
+
   naseljenoMestoId: string;
   naseljenoMestoEdit: NaseljenoMesto;
   naseljenaMesta: NaseljenoMesto[];
@@ -23,6 +24,9 @@ export class NaseljenaMestaEditComponent implements OnInit {
   @Input() drzaveShow: Drzava;
   drzave: Drzava[];
   drzavaEdit: Drzava;
+  drzava: Drzava
+
+  novoNaslejenoMesto: NovoNaseljenoMesto = new NovoNaseljenoMesto(0,"","",null);
 
   constructor(private naseljenaMestaService: NaseljenaMestaService,
               private drzaveService: DrzaveService,
@@ -37,11 +41,12 @@ export class NaseljenaMestaEditComponent implements OnInit {
   }
 
 
+
   novoNaseljenoMestoSubmit(forma: NgForm) {
     this.novoNaslejenoMesto.sifra_mesta = forma.value.sifra_mesta;
     this.novoNaslejenoMesto.naziv = forma.value.naziv;
     this.novoNaslejenoMesto.ptt_oznaka = forma.value.ptt_oznaka;
-   
+    this.novoNaslejenoMesto.drzava =  forma.value.drzava;
     this.naseljenaMestaService.insertNaseljenaMesta(this.novoNaslejenoMesto).subscribe();
     forma.reset();
     this.location.back();
@@ -51,7 +56,7 @@ export class NaseljenaMestaEditComponent implements OnInit {
     this.naseljenoMestoEdit.sifra_mesta = forma.value.sifra_mesta;
     this.naseljenoMestoEdit.naziv = forma.value.naziv;
     this.naseljenoMestoEdit.ptt_oznaka =  forma.value.ptt_oznaka;
-
+    
     this.naseljenaMestaService.updateNaseljenoMesto(this.naseljenoMestoEdit).subscribe();
     forma.reset();
     this.location.back();

@@ -5,6 +5,7 @@ import { NaseljenoMesto } from '../modeli/naseljeno-mesto';
 import { NovoNaseljenoMesto } from '../modeli/novo-naseljeno-mesto';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Drzava } from '../modeli/drzava';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

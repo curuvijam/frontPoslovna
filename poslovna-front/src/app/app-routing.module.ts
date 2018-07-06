@@ -18,7 +18,9 @@ const routes: Routes = [
   { path: 'klijent', component: KlijentComponent},
   { path: 'drzave/naseljena-mesta/:naseljenoMestoId', component: DrzaveComponent },
   { path: 'drzave-edit/:naseljenoMestoId', component: DrzaveEditComponent},
-  {path: 'drzave-edit', component: DrzaveEditComponent}
+  {path: 'drzave-edit', component: DrzaveEditComponent},
+  {path: 'naseljena-mesta', component: NaseljenaMestaComponent}
+  
 
 ];
 

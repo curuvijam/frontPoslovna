@@ -19,17 +19,17 @@
       <div class="form-group">
         <label for="drzava">Drzava</label>
         <form>
-          <select [(ngModel)]="selectedDrzava" name="selectDrzava">
+          <select [(ngModel)]="drzavaSelect" id="drzava" name="drzava" class="form-control">
             <option *ngFor="let drzaveShow of drzave"
             [ngValue]="drzaveShow.id">
             {{drzaveShow.naziv}}</option>
           </select>
-          <button [routerLink]="[]" >Izaberi drzavu</button>
+          <p>SELEKTOVANO: {{drzavaSelect}}</p>
         </form>
       </div>
+      <button type="submit" class="button" [disabled]="!novoNaseljenoMestoForm.valid">Dodaj</button> 
 
-
-      <button type="submit" class="button" [disabled]="!novoNaseljenoMestoForm.valid">Dodaj</button>
+    
 </form>
 </div>
 </div>

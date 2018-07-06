@@ -14,6 +14,7 @@ import { DrzaveService } from './services/drzave.service';
 import { NaseljenaMestaService } from './services/naseljena-mesta.service';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { KlijentiListComponent } from './klijent/klijenti-list/klijenti-list.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     NaseljenaMestaComponent,
     DrzaveEditComponent,
     NaseljenaMestaEditComponent,
-    KlijentComponent
+    KlijentComponent,
+    KlijentiListComponent
   ],
   imports: [
     BrowserModule,

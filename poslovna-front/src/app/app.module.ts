@@ -34,12 +34,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     DrzaveEditComponent,
     NaseljenaMestaEditComponent,
     KlijentComponent,
-<<<<<<< HEAD
     RacuniEditComponent,
-    RacunLicaComponent
-=======
+    RacunLicaComponent,
     KlijentiListComponent
->>>>>>> 0e6f6a3d89c2903a3bd4577e7e9d178775c927b1
   ],
   imports: [
     BrowserModule,
@@ -52,11 +49,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
   providers: [
     DrzaveService,
     NaseljenaMestaService,
-<<<<<<< HEAD
-    RacunLicaService
-=======
+    RacunLicaService,
     KlijentService
->>>>>>> 0e6f6a3d89c2903a3bd4577e7e9d178775c927b1
   ],
   bootstrap: [AppComponent]
 })

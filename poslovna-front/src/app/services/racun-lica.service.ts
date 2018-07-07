@@ -29,8 +29,8 @@ export class RacunLicaService {
     return this.http.get<RacunLica>(this.url + '/' + id)
   }
 
-  insertRacun(kategorija: NovRacunLica): Observable<NovRacunLica>{
-    return this.http.post<NovRacunLica>(this.url, kategorija, httpOptions).pipe(
+  insertRacun(kategorija: NovRacunLica, id: Number): Observable<NovRacunLica>{
+    return this.http.post<NovRacunLica>(this.url + '/' + id, kategorija, httpOptions).pipe(
       catchError(this.handleError<NovRacunLica>('insertRacun'))
     )
   }

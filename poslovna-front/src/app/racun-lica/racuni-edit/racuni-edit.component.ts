@@ -5,6 +5,8 @@ import { RacunLicaService } from '../../services/racun-lica.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { Params } from '@angular/router/src/shared';
+import { Location } from '@angular/common';
+import { KlijentFizicko } from '../../klijent/klijent-fizicko';
 
 @Component({
   selector: 'app-racuni-edit',
@@ -21,11 +23,12 @@ export class RacuniEditComponent implements OnInit {
   racunId: string;
   racunEdit: RacunLica;
   racuni: RacunLica[];
+  noviKlijent: KlijentFizicko = new KlijentFizicko("","", "", "", "");
 
   
 
   constructor(private racunService: RacunLicaService,
-              
+              private location: Location,
               private route: ActivatedRoute) { }
 
 
@@ -38,10 +41,12 @@ export class RacuniEditComponent implements OnInit {
               noviRacunSubmit(forma: NgForm) {
                 this.noviRacun.br_racuna = forma.value.br_racuna;
                 this.noviRacun.datum_otvaranja = forma.value.datum_otvaranja;
+                
                
-                this.racunService.insertRacun(this.noviRacun).subscribe();
+                this.racunService.insertRacun(this.noviRacun,this.noviKlijent.id).subscribe();
+                console.log(this.noviRacun)
                 forma.reset();
-                //this.location.back();
+                this.location.back();
               }
             
             

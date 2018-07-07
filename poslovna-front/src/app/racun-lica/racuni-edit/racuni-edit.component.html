@@ -4,17 +4,13 @@
     <form #noviRacunForm="ngForm" (ngSubmit)="noviRacunSubmit(noviRacunForm)">
         <div class="form-group">
             <label for="br_racuna">Br racuna</label>
-            <input type="text" id="br_racuna" name="br_racuna" class="form-control" required ngModel #br_racuna="ngModel">
+            <input type="text" id="br_racuna" name="br_racuna" class="form-control" required ngModel #brRacuna="ngModel">
           </div>
       <div class="form-group">
         <label for="naziv">Datum otvaranja</label>
-        <input type="date"  id="datum" name="datum_otvaranja"  class="form-control"   required ngModel #datum_otvaranja="ngModel">
+        <input type="date"  id="datum" name="datum_otvaranja"  class="form-control"   required ngModel #datumOtvaranja="ngModel">
       </div>
 
-     <!-- <div class="form-group">
-        <label for="ptt_oznaka">Ptt oznaka</label>
-        <input type="text" id="ptt_oznaka" name="ptt_oznaka" class="form-control" required ngModel #mestoPtt="ngModel">
-      </div> -->
 
       <button type="submit" class="button" [disabled]="!noviRacunForm.valid">Dodaj</button>
 </form>

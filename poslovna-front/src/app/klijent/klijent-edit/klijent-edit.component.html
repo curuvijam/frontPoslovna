@@ -1,0 +1,50 @@
+<div class="container">
+  <h2>Izmena podataka o klijentu</h2>
+  <form name="form" (ngSubmit)="f.form.valid && updateKlijent()" class="register-form" #f="ngForm" novalidate>
+    <!-- email -->
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+      <label>Email:</label>
+      <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="klijent.email" required email #email="ngModel"
+      />
+      <div class="help-block" *ngIf="f.submitted && !email.valid">Email je obavezan</div>
+    </div>
+    <!-- ime i prezime -->
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !naziv.valid }">
+      <label>Ime i prezime:</label>
+      <input type="text" class="form-control" placeholder="Ime i prezime" name="naziv" [(ngModel)]="klijent.naziv" required #naziv="ngModel">
+      <div class="help-block" *ngIf="f.submitted && !naziv.valid">Ime i prezime je obavezno</div>
+    </div>
+    <!-- adresa -->
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !adresa.valid }">
+      <label>Adresa:</label>
+      <input type="text" class="form-control" placeholder="Adresa" name="adresa" [(ngModel)]="klijent.adresa" required #adresa="ngModel">
+      <div class="help-block" *ngIf="f.submitted && !adresa.valid">Adresa je obavezna</div>
+    </div>
+    <!-- brtel -->
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !brtel.valid }">
+      <label>Broj telefona:</label>
+      <input type="text" class="form-control" placeholder="Broj Telefona" name="brtel" [(ngModel)]="klijent.br_telefona" required
+        #brtel="ngModel">
+      <div class="help-block" *ngIf="f.submitted && !brtel.valid">Broj telefona je obavezan</div>
+    </div>
+    <!-- pib -->
+    <div *ngIf="pravno">
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !pib.valid }">
+        <label>PIB:</label>
+        <input type="text" class="form-control" placeholder="PIB" name="pib" [(ngModel)]="klijent.pib" required #pib="ngModel">
+        <div class="help-block" *ngIf="f.submitted && !pib.valid">PIB je obavezan</div>
+      </div>
+    </div>
+    <div *ngIf="!pravno">
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !brlk.valid }">
+        <label>Broj licne karte:</label>
+        <input type="text" class="form-control" placeholder="Broj licne karte" name="brlk" [(ngModel)]="klijent.br_licne_karte" required
+          #brlk="ngModel">
+        <div class="help-block" *ngIf="f.submitted && !brlk.valid">Broj licne karte je obavezan</div>
+      </div>
+    </div>
+    <!-- submit -->
+    <button class="btn btn-primary">Potvrdi</button>
+    <a class="btn btn-link" [routerLink]="['']">Odustani</a>
+  </form>
+</div>

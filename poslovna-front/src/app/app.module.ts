@@ -1,3 +1,4 @@
+import { KlijentEditComponent } from './klijent/klijent-edit/klijent-edit.component';
 import { KlijentService } from './klijent/klijent.service';
 import { KlijentComponent } from './klijent/klijent.component';
 import { RouterModule } from '@angular/router';
@@ -26,7 +27,8 @@ import { KlijentiListComponent } from './klijent/klijenti-list/klijenti-list.com
     DrzaveEditComponent,
     NaseljenaMestaEditComponent,
     KlijentComponent,
-    KlijentiListComponent
+    KlijentiListComponent,
+    KlijentEditComponent
   ],
   imports: [
     BrowserModule,

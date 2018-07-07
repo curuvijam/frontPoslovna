@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { DrzaveEditComponent } from './drzave/drzave-edit/drzave-edit.component';
 import { NaseljenaMestaEditComponent } from './naseljena-mesta/naseljena-mesta-edit/naseljena-mesta-edit.component';
+import { KlijentiListComponent } from './klijent/klijenti-list/klijenti-list.component';
 
 const routes: Routes = [
   { path: 'drzave', component: DrzaveComponent} ,
@@ -19,9 +20,8 @@ const routes: Routes = [
   { path: 'drzave/naseljena-mesta/:naseljenoMestoId', component: DrzaveComponent },
   { path: 'drzave-edit/:naseljenoMestoId', component: DrzaveEditComponent},
   {path: 'drzave-edit', component: DrzaveEditComponent},
-  {path: 'naseljena-mesta', component: NaseljenaMestaComponent}
-  
-
+  {path: 'naseljena-mesta', component: NaseljenaMestaComponent},
+  {path: 'klijenti', component: KlijentiListComponent}
 ];
 
 @NgModule({

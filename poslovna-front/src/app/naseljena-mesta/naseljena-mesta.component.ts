@@ -44,16 +44,6 @@ export class NaseljenaMestaComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-     if (this.route.snapshot.params['drzavaId']) {
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.drzavaId = params['drzavaId'];
-      }
-    
-    );
-    this.getNaseljenaMesta();
-
-  }
   this.getNaseljenaMesta();
 
 }

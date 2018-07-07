@@ -1,17 +1,20 @@
-  <div *ngIf="switch" class="col-md-4 col-md-offset-4">
-  <h2>Registracija Pravnog lica</h2>
-  <div class="col-md-4 col-md-offset-9">
-    <button (click)="toggle()" class="btn btn-danger">Fizicko lice</button>
-  </div>
-    <form name="form" (ngSubmit)="f.form.valid" class="register-form" #f="ngForm" novalidate>
+<div class="container">
+  <div *ngIf="switch" class="col-md-auto">
+    <h2>Registracija Pravnog lica</h2>
+    <div class="col-md-4 col-md-offset-9">
+      <button (click)="toggle()" class="btn btn-danger">Fizicko lice</button>
+    </div>
+    <form name="form" (ngSubmit)="f.form.valid && dodajPravno()" class="register-form" #f="ngForm" novalidate>
       <!-- email -->
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-        <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="klijentPravno.email" required email #email="ngModel"/>
+        <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="klijentPravno.email" required email
+          #email="ngModel" />
         <div class="help-block" *ngIf="f.submitted && !email.valid">Email je obavezan</div>
       </div>
       <!-- ime i prezime -->
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !naziv.valid }">
-        <input type="text" class="form-control" placeholder="Ime i prezime" name="naziv" [(ngModel)]="klijentPravno.naziv" required #naziv="ngModel">
+        <input type="text" class="form-control" placeholder="Ime i prezime" name="naziv" [(ngModel)]="klijentPravno.naziv" required
+          #naziv="ngModel">
         <div class="help-block" *ngIf="f.submitted && !naziv.valid">Ime i prezime je obavezno</div>
       </div>
       <!-- adresa -->
@@ -21,7 +24,8 @@
       </div>
       <!-- brtel -->
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !brtel.valid }">
-        <input type="text" class="form-control" placeholder="Broj Telefona" name="brtel" [(ngModel)]="klijentPravno.brTel" required #brtel="ngModel">
+        <input type="text" class="form-control" placeholder="Broj Telefona" name="brtel" [(ngModel)]="klijentPravno.br_telefona"
+          required #brtel="ngModel">
         <div class="help-block" *ngIf="f.submitted && !brtel.valid">Broj telefona je obavezan</div>
       </div>
       <!-- pib -->
@@ -31,45 +35,52 @@
       </div>
       <!-- submit -->
       <button class="btn btn-primary" [disabled]="loading">Dodaj klijenta</button>
-      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+      />
       <a class="btn btn-link" [routerLink]="['']">Odustani</a>
     </form>
+  </div>
 </div>
 
-<div *ngIf="!switch" class="col-md-4 col-md-offset-4">
+<div *ngIf="!switch" class="col-md-auto">
   <h2>Registracija Fizickog lica</h2>
   <div class="col-md-4 col-md-offset-9">
     <button (click)="toggle()" class="btn btn-danger">Pravno lice</button>
   </div>
-    <form name="form" (ngSubmit)="f.form.valid" class="register-form" #f="ngForm" novalidate>
-      <!-- email -->
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-        <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="klijentFizicko.email" required email #email="ngModel"/>
-        <div class="help-block" *ngIf="f.submitted && !email.valid">Email je obavezan</div>
-      </div>
-      <!-- ime i prezime -->
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !naziv.valid }">
-        <input type="text" class="form-control" placeholder="Ime i prezime" name="naziv" [(ngModel)]="klijentFizicko.naziv" required #naziv="ngModel">
-        <div class="help-block" *ngIf="f.submitted && !naziv.valid">Ime i prezime je obavezno</div>
-      </div>
-      <!-- adresa -->
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !adresa.valid }">
-        <input type="text" class="form-control" placeholder="Adresa" name="adresa" [(ngModel)]="klijentFizicko.adresa" required #adresa="ngModel">
-        <div class="help-block" *ngIf="f.submitted && !adresa.valid">Adresa je obavezna</div>
-      </div>
-      <!-- brtel -->
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !brtel.valid }">
-        <input type="text" class="form-control" placeholder="Broj Telefona" name="brtel" [(ngModel)]="klijentFizicko.brTel" required #brtel="ngModel">
-        <div class="help-block" *ngIf="f.submitted && !brtel.valid">Broj telefona je obavezan</div>
-      </div>
-      <!-- pib -->
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !brlk.valid }">
-        <input type="text" class="form-control" placeholder="Broj licne karte" name="brlk" [(ngModel)]="klijentFizicko.brlk" required #brlk="ngModel">
-        <div class="help-block" *ngIf="f.submitted && !brlk.valid">Broj licne karte je obavezan</div>
-      </div>
-      <!-- submit -->
-      <button class="btn btn-primary" [disabled]="loading">Dodaj klijenta</button>
-      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-      <a class="btn btn-link" [routerLink]="['']">Odustani</a>
-    </form>
+  <form name="form" (ngSubmit)="f.form.valid && dodajFizicko()" class="register-form" #f="ngForm" novalidate>
+    <!-- email -->
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+      <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="klijentFizicko.email" required email
+        #email="ngModel" />
+      <div class="help-block" *ngIf="f.submitted && !email.valid">Email je obavezan</div>
+    </div>
+    <!-- ime i prezime -->
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !naziv.valid }">
+      <input type="text" class="form-control" placeholder="Ime i prezime" name="naziv" [(ngModel)]="klijentFizicko.naziv" required
+        #naziv="ngModel">
+      <div class="help-block" *ngIf="f.submitted && !naziv.valid">Ime i prezime je obavezno</div>
+    </div>
+    <!-- adresa -->
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !adresa.valid }">
+      <input type="text" class="form-control" placeholder="Adresa" name="adresa" [(ngModel)]="klijentFizicko.adresa" required #adresa="ngModel">
+      <div class="help-block" *ngIf="f.submitted && !adresa.valid">Adresa je obavezna</div>
+    </div>
+    <!-- brtel -->
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !brtel.valid }">
+      <input type="text" class="form-control" placeholder="Broj Telefona" name="brtel" [(ngModel)]="klijentFizicko.br_telefona"
+        required #brtel="ngModel">
+      <div class="help-block" *ngIf="f.submitted && !brtel.valid">Broj telefona je obavezan</div>
+    </div>
+    <!-- pib -->
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !brlk.valid }">
+      <input type="text" class="form-control" placeholder="Broj licne karte" name="brlk" [(ngModel)]="klijentFizicko.br_licne_karte"
+        required #brlk="ngModel">
+      <div class="help-block" *ngIf="f.submitted && !brlk.valid">Broj licne karte je obavezan</div>
+    </div>
+    <!-- submit -->
+    <button class="btn btn-primary" [disabled]="loading">Dodaj klijenta</button>
+    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+    />
+    <a class="btn btn-link" [routerLink]="['']">Odustani</a>
+  </form>
 </div>

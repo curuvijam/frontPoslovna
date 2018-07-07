@@ -17,6 +17,7 @@ export class DrzaveEditComponent implements OnInit {
   drzavaId: string;
   drzavaEdit: Drzava;
   drzave: Drzava[];
+  naseljenoMestoId: string;
 
   constructor(private drzaveService: DrzaveService,
               private location: Location,
@@ -55,13 +56,19 @@ export class DrzaveEditComponent implements OnInit {
             
 
   ngOnInit() {
-    if(this.route.snapshot.params['drzavaId']){
+    if (this.route.snapshot.url[0].path === 'drzave') {
       this.route.params.subscribe(
         (params: Params) => {
-          this.drzavaId = params["drzavaId"];
+          this.drzavaId = params['drzavaId'];
         }
       );
       this.getDrzava();
-  }
+    } else if (this.route.snapshot.url[0].path === 'drzave-edit') {
+      this.route.params.subscribe(
+        (params: Params) => {
+          this.naseljenoMestoId = params['naseljenoMestoId'];
+        }
+      );
+    }
 }
 }

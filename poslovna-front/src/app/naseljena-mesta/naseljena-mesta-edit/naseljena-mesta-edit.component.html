@@ -16,7 +16,20 @@
         <input type="text" id="ptt_oznaka" name="ptt_oznaka" class="form-control" required ngModel #mestoPtt="ngModel">
       </div>
 
-      <button type="submit" class="button" [disabled]="!novoNaseljenoMestoForm.valid">Dodaj</button>
+      <div class="form-group">
+        <label for="drzava">Drzava</label>
+        <form>
+          <select [(ngModel)]="drzava" id="drzava" name="drzava" class="form-control">
+            <option *ngFor="let drzaveShow of drzave"
+            [ngValue]="drzaveShow">
+            {{drzaveShow.naziv}}</option>
+          </select>
+          <p>SELEKTOVANO: {{drzava}}</p>
+        </form>
+      </div>
+      <button type="submit" class="button" [disabled]="!novoNaseljenoMestoForm.valid">Dodaj</button> 
+
+    
 </form>
 </div>
 </div>

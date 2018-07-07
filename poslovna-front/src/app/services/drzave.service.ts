@@ -13,6 +13,7 @@ const httpOptions = {
 @Injectable()
 export class DrzaveService {
   private url = 'http://localhost:8080/drzave';
+  private url1 = 'http://localhost:8080/drzave/naseljenamesta';
 
   getDrzave(): Observable<Drzava[]> {
     return this.http.get<Drzava[]>(this.url);
@@ -29,7 +30,7 @@ export class DrzaveService {
 
   updateDrzava(kategorija: Drzava): Observable<Drzava> {
     const id = typeof kategorija === 'string' ? kategorija : kategorija.id;
-    const url = `${this.url}/${id}`;
+    const url = `${this.url1}/${id}`;
     return this.http
       .put<Drzava>(url, kategorija, httpOptions)
       .pipe(catchError(this.handleError<Drzava>('updateDrzava')));
@@ -37,7 +38,7 @@ export class DrzaveService {
 
   deleteDrzava(kategorija: Drzava | string): Observable<Drzava> {
     const id = typeof kategorija === 'string' ? kategorija : kategorija.id;
-    const url = `${this.url}/${id}`;
+    const url = `${this.url1}/${id}`;
 
     return this.http
       .delete<Drzava>(url, httpOptions)

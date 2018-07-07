@@ -5,6 +5,7 @@ import { NaseljenoMesto } from '../modeli/naseljeno-mesto';
 import { NovoNaseljenoMesto } from '../modeli/novo-naseljeno-mesto';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Drzava } from '../modeli/drzava';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,7 +18,7 @@ export class NaseljenaMestaService {
 
 
   private url = 'http://localhost:8080/naseljenamesta';
-  private url1 = 'http://localhost:8080/naseljenamesta/drzave';
+
 
 
   getNaseljenaMesta(): Observable<NaseljenoMesto[]> {
@@ -28,15 +29,15 @@ export class NaseljenaMestaService {
     return this.http.get<NaseljenoMesto>(this.url + '/' + id);
   }
 
-  insertNaseljenaMesta(nasm: NovoNaseljenoMesto, drzavaId: string): Observable<NovoNaseljenoMesto> {
-    return this.http.post<NovoNaseljenoMesto>(this.url1 + '/' + drzavaId, nasm, httpOptions).pipe(
+  insertNaseljenaMesta(nasm: NovoNaseljenoMesto): Observable<NovoNaseljenoMesto> {
+    return this.http.post<NovoNaseljenoMesto>(this.url, nasm, httpOptions).pipe(
       catchError(this.handleError<NovoNaseljenoMesto>('insertNaseljenoMesto'))
     );
   }
 
   updateNaseljenoMesto(nasm: NaseljenoMesto): Observable<NaseljenoMesto> {
     const id = typeof nasm === 'string' ? nasm : nasm.id;
-    const url = `${this.url1}/${id}`;
+    const url = `${this.url}/${id}`;
     return this.http.put<NaseljenoMesto>(url, nasm, httpOptions).pipe(
       catchError(this.handleError<NaseljenoMesto>('updateNaseljenoMesto'))
     );
@@ -44,7 +45,7 @@ export class NaseljenaMestaService {
 
   deleteNaseljenoMesto(nasm: NaseljenoMesto | string): Observable<NaseljenoMesto> {
     const id = typeof nasm === 'string' ? nasm : nasm.id;
-    const url = `${this.url1}/${id}`;
+    const url = `${this.url}/${id}`;
 
     return this.http.delete<NaseljenoMesto>(url, httpOptions).pipe(
       catchError(this.handleError<NaseljenoMesto>('deleteNaseljenoMesto'))

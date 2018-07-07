@@ -2,15 +2,15 @@
   <div class="pull-left">
     <h1 class="list-group-item-heading" > Sifra : {{drzaveShow.sifra_drzave}}</h1>
     <h2 class="list-group-item-heading" > Naziv : {{drzaveShow.naziv}}</h2>
+  
    
     <span class="pull-right"> 
       <button class="button" [routerLink]="['/drzave/' + drzaveShow.id]">Izmeni</button>
       <button class="button-danger" (click)="deleteDrzava(drzaveShow)">Obrisi</button>
-      <button class="btn btn-primary" [routerLink]="['/naseljena-mesta/drzave/' + drzaveShow.id]">Pregled naseljenih mesta</button>
     </span>
   </div>
 </a>
-<button class="button" routerLink="/drzave-edit">Dodaj drzavu</button>
+<button class="btn btn-primary" routerLink="/drzave-edit">Dodaj drzavu</button>
 
 
 

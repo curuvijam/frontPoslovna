@@ -1,3 +1,4 @@
+import { KlijentService } from './klijent/klijent.service';
 import { KlijentComponent } from './klijent/klijent.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +14,7 @@ import { DrzaveService } from './services/drzave.service';
 import { NaseljenaMestaService } from './services/naseljena-mesta.service';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { KlijentiListComponent } from './klijent/klijenti-list/klijenti-list.component';
 
 import { RacunLicaService } from './services/racun-lica.service';
 import { RacuniEditComponent } from './racun-lica/racuni-edit/racuni-edit.component';
@@ -32,8 +34,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     DrzaveEditComponent,
     NaseljenaMestaEditComponent,
     KlijentComponent,
+<<<<<<< HEAD
     RacuniEditComponent,
     RacunLicaComponent
+=======
+    KlijentiListComponent
+>>>>>>> 0e6f6a3d89c2903a3bd4577e7e9d178775c927b1
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,11 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
   providers: [
     DrzaveService,
     NaseljenaMestaService,
+<<<<<<< HEAD
     RacunLicaService
+=======
+    KlijentService
+>>>>>>> 0e6f6a3d89c2903a3bd4577e7e9d178775c927b1
   ],
   bootstrap: [AppComponent]
 })

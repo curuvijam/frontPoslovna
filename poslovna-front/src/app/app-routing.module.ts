@@ -1,3 +1,5 @@
+import { RacuniEditComponent } from './racun-lica/racuni-edit/racuni-edit.component';
+import { RacunLicaComponent } from './racun-lica/racun-lica.component';
 import { KlijentEditComponent } from './klijent/klijent-edit/klijent-edit.component';
 import { KlijentComponent } from './klijent/klijent.component';
 import { NaseljenaMestaComponent } from './naseljena-mesta/naseljena-mesta.component';
@@ -18,6 +20,11 @@ const routes: Routes = [
   { path: 'drzave', component: DrzaveComponent },
   { path: 'naseljenaMesta', component: NaseljenaMestaComponent},
   { path: 'klijent', component: KlijentComponent},
+  { path: 'naseljena-mesta-edit/:drzavaId', component: NaseljenaMestaEditComponent },
+  { path: 'naseljena-mesta/drzave/:drzavaId', component: NaseljenaMestaComponent },
+  { path: 'racuni', component: RacunLicaComponent},
+  { path: 'racuni/:racunId', component: RacuniEditComponent},
+  { path: 'racuni-edit', component: RacuniEditComponent},
   { path: 'drzave/naseljena-mesta/:naseljenoMestoId', component: DrzaveComponent },
   { path: 'drzave-edit/:naseljenoMestoId', component: DrzaveEditComponent},
   { path: 'drzave-edit', component: DrzaveEditComponent},

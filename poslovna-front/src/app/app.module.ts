@@ -17,6 +17,14 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 import { FormsModule } from '@angular/forms';
 import { KlijentiListComponent } from './klijent/klijenti-list/klijenti-list.component';
 
+import { RacunLicaService } from './services/racun-lica.service';
+import { RacuniEditComponent } from './racun-lica/racuni-edit/racuni-edit.component';
+import { RacunLica } from './modeli/racunLica';
+import { RacunLicaComponent } from './racun-lica/racun-lica.component';
+import { BsDatepickerModule } from 'ngx-bootstrap';
+
+
+
 
 @NgModule({
   declarations: [
@@ -28,13 +36,15 @@ import { KlijentiListComponent } from './klijent/klijenti-list/klijenti-list.com
     NaseljenaMestaEditComponent,
     KlijentComponent,
     KlijentiListComponent,
-    KlijentEditComponent
+    KlijentEditComponent,
+    KlijentiListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     DrzaveService,

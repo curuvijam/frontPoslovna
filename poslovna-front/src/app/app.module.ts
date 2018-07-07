@@ -14,6 +14,14 @@ import { NaseljenaMestaService } from './services/naseljena-mesta.service';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+import { RacunLicaService } from './services/racun-lica.service';
+import { RacuniEditComponent } from './racun-lica/racuni-edit/racuni-edit.component';
+import { RacunLica } from './modeli/racunLica';
+import { RacunLicaComponent } from './racun-lica/racun-lica.component';
+import { BsDatepickerModule } from 'ngx-bootstrap';
+
+
+
 
 @NgModule({
   declarations: [
@@ -23,17 +31,22 @@ import { FormsModule } from '@angular/forms';
     NaseljenaMestaComponent,
     DrzaveEditComponent,
     NaseljenaMestaEditComponent,
-    KlijentComponent
+    KlijentComponent,
+    RacuniEditComponent,
+    RacunLicaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BsDatepickerModule.forRoot()
+    
   ],
   providers: [
     DrzaveService,
     NaseljenaMestaService,
+    RacunLicaService
   ],
   bootstrap: [AppComponent]
 })

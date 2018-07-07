@@ -5,19 +5,25 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { DrzaveEditComponent } from './drzave/drzave-edit/drzave-edit.component';
 import { NaseljenaMestaEditComponent } from './naseljena-mesta/naseljena-mesta-edit/naseljena-mesta-edit.component';
+import { RacunLicaComponent } from './racun-lica/racun-lica.component';
+import { RacuniEditComponent } from './racun-lica/racuni-edit/racuni-edit.component';
 
 const routes: Routes = [
   { path: 'drzave', component: DrzaveComponent} ,
   { path: 'naseljenaMesta', component: NaseljenaMestaComponent},
   { path: 'drzave/:drzavaId', component: DrzaveEditComponent},
   { path: 'naseljena-mesta/:naseljenoMestoId', component: NaseljenaMestaEditComponent},
-  {path : 'drzave-edit', component: DrzaveEditComponent},
-  {path: 'naseljena-mesta-edit', component: NaseljenaMestaEditComponent},
+  { path : 'drzave-edit', component: DrzaveEditComponent},
+  { path: 'naseljena-mesta-edit', component: NaseljenaMestaEditComponent},
   { path: 'drzave', component: DrzaveComponent },
   { path: 'naseljenaMesta', component: NaseljenaMestaComponent},
   { path: 'klijent', component: KlijentComponent},
   { path: 'naseljena-mesta-edit/:drzavaId', component: NaseljenaMestaEditComponent },
   { path: 'naseljena-mesta/drzave/:drzavaId', component: NaseljenaMestaComponent },
+  { path: 'racuni', component: RacunLicaComponent},
+  { path: 'racuni/:racunId', component: RacuniEditComponent},
+  { path: 'racuni-edit', component: RacuniEditComponent},
+  
 ];
 
 @NgModule({

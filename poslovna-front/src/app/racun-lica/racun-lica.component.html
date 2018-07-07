@@ -1,0 +1,16 @@
+<a class="list-group-item clearfix" *ngFor="let racunShow of racuni">
+  <div class="pull-left">
+    <h1 class="list-group-item-heading" > Br racuna : {{racunShow.br_racuna}}</h1>
+    <h2 class="list-group-item-heading" > Datum otvaranja : {{racunShow.datum_otvaranja}}</h2>
+    <!--<h2 class="list-group-item-heading" > Naziv : {{naseljenaMestaShow.ptt_oznaka}}</h2> -->
+   <!-- <h2 class="list-group-item-heading" > Naseljeno mesto: {{drzaveShow.naseljenoMesto}}</h2> -->
+    <span class="pull-right"> 
+      <button class="button" [routerLink]="['/racuni/' + racunShow.id]">Izmeni</button>
+      <button class="button-danger" (click)="deleteRacun(racunShow)">Obrisi</button>
+    </span>
+  </div>
+</a>
+<button class="button" routerLink="/racuni-edit">Dodaj racun</button>
+
+
+

@@ -40,13 +40,12 @@ export class NaseljenaMestaEditComponent implements OnInit {
     );
   }
 
-
-
   novoNaseljenoMestoSubmit(forma: NgForm) {
     this.novoNaslejenoMesto.sifra_mesta = forma.value.sifra_mesta;
     this.novoNaslejenoMesto.naziv = forma.value.naziv;
     this.novoNaslejenoMesto.ptt_oznaka = forma.value.ptt_oznaka;
-    this.novoNaslejenoMesto.drzava =  forma.value.drzava;
+    this.novoNaslejenoMesto.drzava =  this.drzava;
+  
     this.naseljenaMestaService.insertNaseljenaMesta(this.novoNaslejenoMesto).subscribe();
     forma.reset();
     this.location.back();

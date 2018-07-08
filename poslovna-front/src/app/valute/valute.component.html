@@ -1,0 +1,18 @@
+<a class="list-group-item clearfix" *ngFor="let valuteShow of valute">
+  <div class="pull-left">
+    <h2 class="list-group-item-heading" > ID valute : {{valuteShow.id_valute}}</h2>
+    <h2 class="list-group-item-heading" > Sifra : {{valuteShow.sifra}}</h2>
+    <h2 class="list-group-item-heading" > Naziv : {{valuteShow.naziv}}</h2>
+    <h2 class="list-group-item-heading" > Domicilna : {{valuteShow.domicilna}}</h2>
+  
+   
+    <span class="pull-right"> 
+    <button class="btn btn-primary" [routerLink]="['/valute/' + valuteShow.id]">Izmeni</button> 
+      <button class="button-danger" (click)="deleteValuta(valuteShow)">Obrisi</button> 
+    </span>
+  </div>
+</a>
+<button class="btn btn-primary" routerLink="/valute-edit">Dodaj valutu</button>
+
+
+

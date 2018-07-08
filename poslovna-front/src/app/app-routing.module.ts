@@ -9,6 +9,8 @@ import { RouterModule, Routes} from '@angular/router';
 import { DrzaveEditComponent } from './drzave/drzave-edit/drzave-edit.component';
 import { NaseljenaMestaEditComponent } from './naseljena-mesta/naseljena-mesta-edit/naseljena-mesta-edit.component';
 import { KlijentiListComponent } from './klijent/klijenti-list/klijenti-list.component';
+import { ValuteComponent } from './valute/valute.component';
+import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component';
 
 const routes: Routes = [
   { path: 'drzave', component: DrzaveComponent} ,
@@ -31,7 +33,11 @@ const routes: Routes = [
   { path: 'naseljena-mesta', component: NaseljenaMestaComponent},
   { path: 'klijenti', component: KlijentiListComponent},
   { path: 'klijenti/klijent/pravno/:klijentId', component: KlijentEditComponent},
-  { path: 'klijenti/klijent/fizicko/:klijentId', component: KlijentEditComponent}
+  { path: 'klijenti/klijent/fizicko/:klijentId', component: KlijentEditComponent},
+  {path: 'valute', component: ValuteComponent},
+  {path: 'valute-edit', component: ValuteEditComponent},
+  {path: 'valute/:valutaId', component: ValuteEditComponent},
+  
 ];
 
 @NgModule({

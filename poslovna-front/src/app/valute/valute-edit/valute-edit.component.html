@@ -1,0 +1,60 @@
+<div class="row" *ngIf="!valutaEdit">
+  <h1>Dodavanje nove valute</h1>
+<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <form #novaValutaForm="ngForm" (ngSubmit)="novaValutaSubmit(novaValutaForm)">
+        <div class="form-group">
+            <label for="id_valute">Id valute</label>
+            <input type="number" id="id_valute" name="id_valute" class="form-control" required ngModel #valutaId="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="sifra">Sifra valute</label>
+            <input type="text" id="sifra" name="sifra" class="form-control" required ngModel #valutaSifra="ngModel">
+          </div>
+      <div class="form-group">
+        <label for="naziv">Naziv valute</label>
+        <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #valutaNaziv="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="domicilna">Domicilna</label>
+        <input type="boolean" id="domicilna" name="domicilna" class="form-control" required ngModel #valutaDomicilna="ngModel">
+      </div> 
+
+      <button type="submit" class="btn btn-primary" [disabled]="!novaValutaForm.valid">Dodaj</button>
+</form>
+</div>
+</div>
+
+
+<div class="row" *ngIf="valutaEdit">
+<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+<h1>Uredjivanje valute</h1>
+<form #editValutaForm="ngForm" (ngSubmit)="valutaEdt()">
+    <div class="form-group">
+        <label for="id_valute">ID valute</label>
+        <input type="number" id="id_valute" name="id_valute" class="form-control" required ngModel #valutaId="ngModel" [(ngModel)]="valutaEdit.id_valute">
+        <span class="help-block" *ngIf="!valutaId.valid && valutaId.touched">ID je obavezan!</span>
+      </div>
+    
+      <div class="form-group">
+        <label for="sifra">Sifra valute</label>
+        <input type="text" id="sifra" name="sifra" class="form-control" required ngModel #valutaSifra="ngModel" [(ngModel)]="valutaEdit.sifra">
+        <span class="help-block" *ngIf="!valutaSifra.valid && valutaSifra.touched">Sifra je obavezna!</span>
+      </div>
+
+  <div class="form-group">
+    <label for="naziv">Naziv valute</label>
+    <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #valutaNaziv="ngModel" [(ngModel)]="valutaEdit.naziv">
+    <span class="help-block" *ngIf="!valutaNaziv.valid && valutaNaziv.touched">Naziv  je obavezan!</span>
+  </div>
+
+  <div class="form-group">
+    <label for="domicilna">Domicilna</label>
+    <input type="boolean" id="domicilna" name="domicilna" class="form-control" required ngModel #valutaDomicilna="ngModel" [(ngModel)]="valutaEdit.domicilna">
+    <span class="help-block" *ngIf="!valutaDomicilna.valid && valutaDomicilna.touched">Obavezno polje!</span>
+  </div> 
+
+  <button type="submit" class="btn btn-primary" [disabled]="!editValutaForm.valid">Izmeni</button>
+</form>
+</div>
+</div>

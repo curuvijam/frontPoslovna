@@ -16,20 +16,20 @@ export class ValuteService {
   private url = 'http://localhost:8080/valute';
 
 
-  getDrzave(): Observable<Valuta[]> {
+  getValute(): Observable<Valuta[]> {
     return this.http.get<Valuta[]>(this.url);
   }
-  getDrzava(id: string): Observable<Valuta> {
+  getValuta(id: string): Observable<Valuta> {
     return this.http.get<Valuta>(this.url + '/' + id);
   }
 
-  insertDrzava(kategorija: NovaValuta): Observable<NovaValuta> {
+  insertValuta(kategorija: NovaValuta): Observable<NovaValuta> {
     return this.http.post<NovaValuta>(this.url, kategorija, httpOptions).pipe(
       catchError(this.handleError<NovaValuta>('insertValuta'))
     );
   }
 
-  updateDrzava(kategorija: Valuta): Observable<Valuta> {
+  updateValuta(kategorija: Valuta): Observable<Valuta> {
     const id = typeof kategorija === 'string' ? kategorija : kategorija.id;
     const url = `${this.url}/${id}`;
     return this.http
@@ -37,7 +37,7 @@ export class ValuteService {
       .pipe(catchError(this.handleError<Valuta>('updateValuta')));
   }
 
-  deleteDrzava(kategorija: Valuta | string): Observable<Valuta> {
+  deleteValuta(kategorija: Valuta | string): Observable<Valuta> {
     const id = typeof kategorija === 'string' ? kategorija : kategorija.id;
     const url = `${this.url}/${id}`;
 

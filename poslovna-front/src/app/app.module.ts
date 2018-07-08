@@ -22,6 +22,7 @@ import { RacuniEditComponent } from './racun-lica/racuni-edit/racuni-edit.compon
 import { RacunLica } from './modeli/racunLica';
 import { RacunLicaComponent } from './racun-lica/racun-lica.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { ValuteService } from './services/valute.service';
 
 
 
@@ -52,7 +53,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     DrzaveService,
     NaseljenaMestaService,
     KlijentService,
-    RacunLicaService
+    RacunLicaService,
+    ValuteService,
   ],
   bootstrap: [AppComponent]
 })

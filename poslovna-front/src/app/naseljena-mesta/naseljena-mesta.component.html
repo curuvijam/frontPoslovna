@@ -6,12 +6,12 @@
     <h2 class="list-group-item-heading" > Drzava : {{naseljenaMestaShow.drzava}}</h2>
   
     <span class="pull-right"> 
-      <button class="button" [routerLink]="['/naseljena-mesta/' + naseljenaMestaShow.id]">Izmeni</button>
+      <button class="btn btn-primary" [routerLink]="['/naseljena-mesta/' + naseljenaMestaShow.id]">Izmeni</button>
       <button class="button-danger" (click)="deleteNaseljenoMesto(naseljenaMestaShow)">Obrisi</button>
-      <button class="btn btn-primary" [routerLink]="['/drzave/naseljena-mesta/' + naseljenaMestaShow.id]">Pregled drzava</button>
+      
     </span>
   </div>
 </a>
-<button class="button" routerLink="/naseljena-mesta-edit">Dodaj naseljeno mesto</button>
+<button class="btn btn-primary" routerLink="/naseljena-mesta-edit">Dodaj naseljeno mesto</button>
 
 

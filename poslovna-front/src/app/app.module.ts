@@ -37,7 +37,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     KlijentComponent,
     KlijentiListComponent,
     KlijentEditComponent,
-    KlijentiListComponent
+    KlijentiListComponent,
+    RacunLicaComponent,
+    RacuniEditComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
   providers: [
     DrzaveService,
     NaseljenaMestaService,
-    KlijentService
+    KlijentService,
+    RacunLicaService
   ],
   bootstrap: [AppComponent]
 })

@@ -20,6 +20,20 @@
         <input type="boolean" id="domicilna" name="domicilna" class="form-control" required ngModel #valutaDomicilna="ngModel">
       </div> 
 
+      <div class="form-group">
+        <label for="drzava">Drzava</label>
+        <form>
+          <select [(ngModel)]="drzava" id="drzava" name="drzava" class="form-control">
+            <option *ngFor="let drzaveShow of drzave"
+            [ngValue]="drzaveShow">
+            {{drzaveShow.naziv}}</option>
+          </select>
+          <p>SELEKTOVANO: {{drzava}}</p>
+        </form>
+      </div>
+
+      
+
       <button type="submit" class="btn btn-primary" [disabled]="!novaValutaForm.valid">Dodaj</button>
 </form>
 </div>

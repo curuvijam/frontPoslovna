@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { NovaValuta } from '../../modeli/nova-valuta';
 import { Valuta } from '../../modeli/valuta';
 import { ValuteService } from '../../services/valute.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
+import { Drzava } from '../../modeli/drzava';
+import { DrzaveService } from '../../services/drzave.service';
 @Component({
   selector: 'app-valute-edit',
   templateUrl: './valute-edit.component.html',
@@ -13,10 +15,16 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 export class ValuteEditComponent implements OnInit {
 
 
-  novaValuta: NovaValuta = new NovaValuta(0,"","",false);
+  novaValuta: NovaValuta = new NovaValuta(0,"","",false,null);
   valutaId: string;
   valutaEdit: Valuta;
   valute: Valuta[];
+  drzava: Drzava;
+  @Input() drzaveShow: Drzava;
+  drzave: Drzava[];
+  drzavaEdit: Drzava;
+  drzavaId: string;
+
 
    getValute(): void {
     this.valuteService.getValute()
@@ -40,7 +48,7 @@ export class ValuteEditComponent implements OnInit {
       this.novaValuta.sifra = forma.value.sifra;
       this.novaValuta.naziv = forma.value.naziv;
       this.novaValuta.domicilna =  forma.value.domicilna;
-    
+      this.novaValuta.drzava = this.drzava;
       this.valuteService.insertValuta(this.novaValuta).subscribe();
       forma.reset();
       this.location.back();
@@ -63,7 +71,22 @@ export class ValuteEditComponent implements OnInit {
     }
 
 
+    getDrzave(): void {
+      this.drzaveService.getDrzave()
+        .subscribe(drzave => this.drzave = drzave);
+      
+    }
+  
+    getDrzava() {
+      this.drzaveService.getDrzava(this.drzavaId).subscribe(
+        (drzava) => this.drzavaEdit = drzava
+      );
+    }
+
+
+
   constructor(private valuteService: ValuteService,
+              private drzaveService: DrzaveService,
              private location: Location,
              private route: ActivatedRoute) { }
 
@@ -76,6 +99,7 @@ export class ValuteEditComponent implements OnInit {
       );
       this.getValuta();
   }
+  this.getDrzave();
 }
 
 }

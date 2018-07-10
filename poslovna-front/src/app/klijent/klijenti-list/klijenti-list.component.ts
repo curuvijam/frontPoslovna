@@ -37,10 +37,6 @@ export class KlijentiListComponent implements OnInit {
     }
   }
 
-  izmeniFizicko(klijent: KlijentFizicko) {
-    console.log('Izmena fizickog lica');
-  }
-
   obrisiPravno(id: number) {
     this.klijentService.deletePravnoLice(id).subscribe();
     for (const klijent of this.klijentiPravna) {
@@ -49,9 +45,4 @@ export class KlijentiListComponent implements OnInit {
       }
     }
   }
-
-  izmeniPravno(klijent: KlijentPravno) {
-    console.log('Izmena pravnog lica');
-  }
-
 }

@@ -21,10 +21,10 @@
           <td>{{klijent?.br_telefona}}</td>
           <td>{{klijent?.br_licne_karte}}</td>
           <td>
-            <button class="btn btn-outline-warning" (click)="izmeniFizicko(klijent)">Izmeni</button>
+            <button class="btn btn-outline-warning" [routerLink]="['klijent/fizicko/' + klijent.id]">Izmeni</button>
           </td>
           <td>
-            <button class="btn btn-outline-warning" (click)="izmeniFizicko(klijent)">Dodaj racun</button>
+            <button class="btn btn-outline-success" [routerLink]="['/racuni-edit/' + klijent.id]">Dodaj racun</button>
           </td>
           <td>
             <button class="btn btn-outline-danger" (click)="obrisiFizicko(klijent.id)">Obrisi</button>
@@ -53,10 +53,10 @@
             <td>{{klijent?.br_telefona}}</td>
             <td>{{klijent?.pib}}</td>
             <td>
-              <button class="btn btn-outline-warning" (click)="izmeniPravno(klijent)">Izmeni</button>
+              <button class="btn btn-outline-warning" [routerLink]="['klijent/pravno/' + klijent.id]">Izmeni</button>
             </td>
             <td>
-              <button class="btn btn-outline-success" routerLink="/racuni-edit">Dodaj racun</button>
+              <button class="btn btn-outline-success" [routerLink]="['/racuni-edit/' + klijent.id]">Dodaj racun</button>
             </td>
             <td>
               <button class="btn btn-outline-danger" (click)="obrisiPravno(klijent.id)">Obrisi</button>

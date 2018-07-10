@@ -35,7 +35,7 @@ export class KlijentService {
   }
 
   updateFizickoLice(klijent: KlijentFizicko): Observable<KlijentFizicko> {
-    return this.http.put<KlijentFizicko>(this.url_fizicko, httpOptions);
+    return this.http.put<KlijentFizicko>(this.url_fizicko, klijent,  httpOptions);
   }
 
   deleteFizickoLice(id: number): Observable<KlijentFizicko> {
@@ -43,11 +43,19 @@ export class KlijentService {
   }
 
   updatePravnoLice(klijent: KlijentPravno): Observable<KlijentPravno> {
-    return this.http.put<KlijentPravno>(this.url_pravno, httpOptions);
+    return this.http.put<KlijentPravno>(this.url_pravno, klijent,  httpOptions);
   }
 
   deletePravnoLice(id: number): Observable<KlijentPravno> {
     return this.http.delete<KlijentPravno>(this.url_pravno + '/' + id, httpOptions);
+  }
+
+  getPravnoLice(id: number): Observable<KlijentPravno> {
+    return this.http.get<KlijentPravno>(this.url_pravno + '/' + id, httpOptions);
+  }
+
+  getFizickoLice(id: number): Observable<KlijentFizicko> {
+    return this.http.get<KlijentFizicko>(this.url_fizicko + '/' + id, httpOptions);
   }
 
 

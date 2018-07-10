@@ -30,7 +30,7 @@
     
   <div class="form-group">
     <label for="naziv">Datum otvaranja</label>
-    <input type="text"  id="datumOtvaranja" name="datum_otvaranja" class="form-control" required ngModel #datumOtvaranja="ngModel" [(ngModel)]="racunEdit.datum_otvaranja">
+    <input type="date"  id="datumOtvaranja" name="datum_otvaranja" class="form-control" required ngModel #datumOtvaranja="ngModel" [(ngModel)]="racunEdit.datum_otvaranja">
     <span class="help-block" *ngIf="!datumOtvaranja.valid && datumOtvaranja.touched">Datum otvaranja je obavezan!</span>
   </div>
 

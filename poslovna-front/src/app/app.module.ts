@@ -1,3 +1,4 @@
+import { KlijentEditComponent } from './klijent/klijent-edit/klijent-edit.component';
 import { KlijentService } from './klijent/klijent.service';
 import { KlijentComponent } from './klijent/klijent.component';
 import { RouterModule } from '@angular/router';
@@ -34,8 +35,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     DrzaveEditComponent,
     NaseljenaMestaEditComponent,
     KlijentComponent,
+
     RacuniEditComponent,
     RacunLicaComponent,
+    KlijentiListComponent,
+    KlijentEditComponent,
+
     KlijentiListComponent
   ],
   imports: [
@@ -44,13 +49,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     HttpClientModule,
     FormsModule,
     BsDatepickerModule.forRoot()
-    
   ],
   providers: [
     DrzaveService,
     NaseljenaMestaService,
     RacunLicaService,
-    KlijentService
+     KlijentService
   ],
   bootstrap: [AppComponent]
 })

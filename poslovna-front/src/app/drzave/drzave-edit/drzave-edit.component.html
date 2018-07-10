@@ -11,7 +11,7 @@
         <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #drzavaSifra="ngModel">
       </div>
 
-      <button type="submit" class="button" [disabled]="!novaDrzavaForm.valid">Dodaj</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!novaDrzavaForm.valid">Dodaj</button>
 </form>
 </div>
 </div>
@@ -33,7 +33,7 @@
     <span class="help-block" *ngIf="!dzavaNaziv.valid && dzavaNaziv.touched">Naziv drzave je obavezan!</span>
   </div>
 
-  <button type="submit" class="button" [disabled]="!editDrzavaForm.valid">Izmeni</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!editDrzavaForm.valid">Izmeni</button>
 </form>
 </div>
 </div>

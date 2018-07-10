@@ -11,6 +11,8 @@ import { NaseljenaMestaEditComponent } from './naseljena-mesta/naseljena-mesta-e
 
 
 import { KlijentiListComponent } from './klijent/klijenti-list/klijenti-list.component';
+import { ValuteComponent } from './valute/valute.component';
+import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component';
 
 
 
@@ -44,7 +46,14 @@ const routes: Routes = [
 
   { path: 'klijenti/klijent/pravno/:klijentId', component: KlijentEditComponent},
   { path: 'klijenti/klijent/fizicko/:klijentId', component: KlijentEditComponent},
-  { path: 'racuni-edit/:klijentFizickoId', component: RacuniEditComponent}
+
+  { path: 'racuni-edit/:klijentFizickoId', component: RacuniEditComponent},
+
+
+  {path: 'valute', component: ValuteComponent},
+  {path: 'valute-edit', component: ValuteEditComponent},
+  {path: 'valute/:valutaId', component: ValuteEditComponent},
+  
 
 ];
 

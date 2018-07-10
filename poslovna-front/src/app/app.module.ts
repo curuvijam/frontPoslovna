@@ -22,6 +22,9 @@ import { RacuniEditComponent } from './racun-lica/racuni-edit/racuni-edit.compon
 import { RacunLica } from './modeli/racunLica';
 import { RacunLicaComponent } from './racun-lica/racun-lica.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { ValuteService } from './services/valute.service';
+import { ValuteComponent } from './valute/valute.component';
+import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component';
 
 
 
@@ -41,7 +44,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     KlijentiListComponent,
     KlijentEditComponent,
 
-    KlijentiListComponent
+   
+    
+    RacunLicaComponent,
+    RacuniEditComponent,
+    ValuteComponent,
+    ValuteEditComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +62,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     DrzaveService,
     NaseljenaMestaService,
     RacunLicaService,
-     KlijentService
+     KlijentService,
+    
+    RacunLicaService,
+    ValuteService,
   ],
   bootstrap: [AppComponent]
 })

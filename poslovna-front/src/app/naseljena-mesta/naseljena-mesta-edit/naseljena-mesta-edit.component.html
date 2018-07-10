@@ -27,7 +27,7 @@
           <p>SELEKTOVANO: {{drzava}}</p>
         </form>
       </div>
-      <button type="submit" class="button" [disabled]="!novoNaseljenoMestoForm.valid">Dodaj</button> 
+      <button type="submit" class="btn btn-primary" [disabled]="!novoNaseljenoMestoForm.valid">Dodaj</button> 
 
     
 </form>
@@ -57,7 +57,7 @@
     <span class="help-block" *ngIf="!mestoOznaka.valid && mestoOznaka.touched">Oznaka mesta je obavezna!</span>
   </div>
 
-  <button type="submit" class="button" [disabled]="!editNasljenoMestoForm.valid">Izmeni</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!editNasljenoMestoForm.valid">Izmeni</button>
 </form>
 </div>
 </div>

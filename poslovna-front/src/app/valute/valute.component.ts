@@ -9,7 +9,7 @@ import { ValuteService } from '../services/valute.service';
   styleUrls: ['./valute.component.css']
 })
 export class ValuteComponent implements OnInit {
-  @Input() valutaShow: Valuta;
+  @Input() valuteShow: Valuta;
 
   valute: Valuta[];
   valutaId: string;

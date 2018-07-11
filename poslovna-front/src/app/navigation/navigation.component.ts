@@ -16,7 +16,7 @@ export class NavigationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (localStorage.getItem('ulogovan') === 'jeste') {
+    if (sessionStorage.getItem('ulogovan') === 'jeste') {
       this.isLoggedIn = true;
     }
     this.toggleLoginService.change.subscribe(isLoggedIn => {
@@ -25,7 +25,7 @@ export class NavigationComponent implements OnInit {
   }
 
   logout(): void {
-    localStorage.setItem('ulogovan', 'nije');
+    sessionStorage.setItem('ulogovan', 'nije');
     this.router.navigate(['login']);
     this.toggleLoginService.toggle();
   }

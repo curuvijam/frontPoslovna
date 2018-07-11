@@ -22,9 +22,10 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.model.username === 'marko' && this.model.password === 'admin') {
-      localStorage.setItem('ulogovan', 'jeste');
+      sessionStorage.setItem('ulogovan', 'jeste');
       this.toggleLoginService.toggle();
       this.router.navigate(['']);
+      window.location.reload();
     } else {
       this.error = 'Neispravni podaci';
     }

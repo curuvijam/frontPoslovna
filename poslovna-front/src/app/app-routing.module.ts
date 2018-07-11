@@ -8,15 +8,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { DrzaveEditComponent } from './drzave/drzave-edit/drzave-edit.component';
 import { NaseljenaMestaEditComponent } from './naseljena-mesta/naseljena-mesta-edit/naseljena-mesta-edit.component';
-
-
 import { KlijentiListComponent } from './klijent/klijenti-list/klijenti-list.component';
+import { NalogZaIsplatuComponent } from './nalog-za-isplatu/nalog-za-isplatu.component';
 import { ValuteComponent } from './valute/valute.component';
 import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component';
+import { LoginComponent } from './login/login.component';
 
 
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent},
   { path: 'drzave', component: DrzaveComponent} ,
   { path: 'naseljenaMesta', component: NaseljenaMestaComponent},
   { path: 'drzave/:drzavaId', component: DrzaveEditComponent},
@@ -26,34 +27,26 @@ const routes: Routes = [
   { path: 'drzave', component: DrzaveComponent },
   { path: 'naseljenaMesta', component: NaseljenaMestaComponent},
   { path: 'klijent', component: KlijentComponent},
-
-
   { path: 'naseljena-mesta-edit/:drzavaId', component: NaseljenaMestaEditComponent },
   { path: 'naseljena-mesta/drzave/:drzavaId', component: NaseljenaMestaComponent },
   { path: 'racuni', component: RacunLicaComponent},
   { path: 'racuni/:racunId', component: RacuniEditComponent},
   { path: 'racuni-edit', component: RacuniEditComponent},
-
   { path: 'drzave/naseljena-mesta/:naseljenoMestoId', component: DrzaveComponent },
   { path: 'drzave-edit/:naseljenoMestoId', component: DrzaveEditComponent},
   { path: 'drzave-edit', component: DrzaveEditComponent},
   { path: 'naseljena-mesta', component: NaseljenaMestaComponent},
   { path: 'klijenti', component: KlijentiListComponent},
-
   { path: 'racuni', component: RacunLicaComponent},
   { path: 'racuni/:racunId', component: RacuniEditComponent},
   { path: 'racuni-edit', component: RacuniEditComponent},
-
   { path: 'klijenti/klijent/pravno/:klijentId', component: KlijentEditComponent},
   { path: 'klijenti/klijent/fizicko/:klijentId', component: KlijentEditComponent},
-
+  { path: 'nalogZaIsplatu', component: NalogZaIsplatuComponent},
   { path: 'racuni-edit/:klijentFizickoId', component: RacuniEditComponent},
-
-
-  {path: 'valute', component: ValuteComponent},
-  {path: 'valute-edit', component: ValuteEditComponent},
-  {path: 'valute/:valutaId', component: ValuteEditComponent},
-  
+  { path: 'valute', component: ValuteComponent},
+  { path: 'valute-edit', component: ValuteEditComponent},
+  { path: 'valute/:valutaId', component: ValuteEditComponent}
 
 ];
 

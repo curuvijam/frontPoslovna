@@ -26,6 +26,8 @@ import { ValuteService } from './services/valute.service';
 import { NalogZaIsplatuComponent } from './nalog-za-isplatu/nalog-za-isplatu.component';
 import { ValuteComponent } from './valute/valute.component';
 import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component';
+import { LoginComponent } from './login/login.component';
+import { ToggleLoginService } from './services/toggle-login.service';
 
 
 
@@ -47,7 +49,8 @@ import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component'
     RacuniEditComponent,
     NalogZaIsplatuComponent,
     ValuteComponent,
-    ValuteEditComponent
+    ValuteEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component'
     KlijentService,
     RacunLicaService,
     ValuteService,
+    ToggleLoginService,
   ],
   bootstrap: [AppComponent]
 })

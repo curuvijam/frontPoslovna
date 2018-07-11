@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToggleLoginService } from '../services/toggle-login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  isLoggedIn: boolean;
 
-  constructor() { }
+  constructor(
+    private toggleLoginService: ToggleLoginService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    if (localStorage.getItem('ulogovan') === 'jeste') {
+      this.isLoggedIn = true;
+    }
+    this.toggleLoginService.change.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    });
+  }
+
+  logout(): void {
+    localStorage.setItem('ulogovan', 'nije');
+    this.router.navigate(['login']);
+    this.toggleLoginService.toggle();
   }
 
 }

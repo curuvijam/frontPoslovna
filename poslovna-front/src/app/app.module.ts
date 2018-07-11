@@ -38,9 +38,14 @@ import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component'
     DrzaveEditComponent,
     NaseljenaMestaEditComponent,
     KlijentComponent,
+
+    RacuniEditComponent,
+    RacunLicaComponent,
     KlijentiListComponent,
     KlijentEditComponent,
-    KlijentiListComponent,
+
+   
+    
     RacunLicaComponent,
     RacuniEditComponent,
     ValuteComponent,
@@ -56,7 +61,9 @@ import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component'
   providers: [
     DrzaveService,
     NaseljenaMestaService,
-    KlijentService,
+    RacunLicaService,
+     KlijentService,
+    
     RacunLicaService,
     ValuteService,
   ],

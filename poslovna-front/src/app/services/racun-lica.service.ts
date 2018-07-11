@@ -20,6 +20,7 @@ const httpOptions = {
 export class RacunLicaService {
 
   private url = 'http://localhost:8080/racuni';
+  private url1 = 'http://localhost:8080/racuni/klijentFizicko'
 
   getRacuni(): Observable<RacunLica[]> {
     return this.http.get<RacunLica[]>(this.url);
@@ -29,9 +30,9 @@ export class RacunLicaService {
     return this.http.get<RacunLica>(this.url + '/' + id)
   }
 
-  insertRacun(kategorija: NovRacunLica): Observable<NovRacunLica>{
-    return this.http.post<NovRacunLica>(this.url, kategorija, httpOptions).pipe(
-      catchError(this.handleError<NovRacunLica>('insertRacun'))
+  insertRacunFizicko(kategorija: NovRacunLica,klijentId: string): Observable<NovRacunLica>{
+    return this.http.post<NovRacunLica>(this.url1 + '/' + klijentId, kategorija, httpOptions).pipe(
+      catchError(this.handleError<NovRacunLica>('insertRacunFizicko'))
     )
   }
 

@@ -1,16 +1,35 @@
-<a class="list-group-item clearfix" *ngFor="let racunShow of racuni">
-  <div class="pull-left">
-    <h1 class="list-group-item-heading" > Br racuna : {{racunShow.br_racuna}}</h1>
-    <h2 class="list-group-item-heading" > Datum otvaranja : {{racunShow.datum_otvaranja}}</h2>
-    <!--<h2 class="list-group-item-heading" > Naziv : {{naseljenaMestaShow.ptt_oznaka}}</h2> -->
-   <!-- <h2 class="list-group-item-heading" > Naseljeno mesto: {{drzaveShow.naseljenoMesto}}</h2> -->
-    <span class="pull-right"> 
-      <button class="button" [routerLink]="['/racuni/' + racunShow.id]">Izmeni</button>
-      <button class="button-danger" (click)="deleteRacun(racunShow)">Obrisi</button>
-    </span>
+<div class="container">
+  <div class="col-md-auto">
+    <h1>Fizicka lica</h1>
+    <table class="table table-striped table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Br racuna</th>
+          <th scope="col">Datum otvaranja</th>
+          <th scope="col">Klijent</th>
+         
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let racunShow of racuni">
+        <tr>
+          <th scope="row">{{racunShow.br_racuna}}</th>
+          <td>{{racunShow.datum_otvaranja}}</td>
+          
+          <td>
+            <button class="btn btn-outline-warning" [routerLink]="['/racuni/' + racunShow.id]">Izmeni</button>
+          </td>
+          
+          <td>
+            <button class="btn btn-outline-danger" (click)="deleteRacun(racunShow)">Obrisi</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</a>
-<button class="button" routerLink="/racuni-edit">Dodaj racun</button>
+</div>
+
 
 
 

@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.model.username === 'marko' && this.model.password === 'admin') {
+    if (this.model.username === 'admin' && this.model.password === 'admin') {
       sessionStorage.setItem('ulogovan', 'jeste');
       this.toggleLoginService.toggle();
       this.router.navigate(['']);

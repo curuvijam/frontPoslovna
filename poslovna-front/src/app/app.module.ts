@@ -24,6 +24,8 @@ import { RacunLicaComponent } from './racun-lica/racun-lica.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { ValuteService } from './services/valute.service';
 import { NalogZaIsplatuComponent } from './nalog-za-isplatu/nalog-za-isplatu.component';
+import { ValuteComponent } from './valute/valute.component';
+import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component';
 
 
 
@@ -37,12 +39,15 @@ import { NalogZaIsplatuComponent } from './nalog-za-isplatu/nalog-za-isplatu.com
     DrzaveEditComponent,
     NaseljenaMestaEditComponent,
     KlijentComponent,
+    RacuniEditComponent,
+    RacunLicaComponent,
     KlijentiListComponent,
     KlijentEditComponent,
-    KlijentiListComponent,
     RacunLicaComponent,
     RacuniEditComponent,
-    NalogZaIsplatuComponent
+    NalogZaIsplatuComponent,
+    ValuteComponent,
+    ValuteEditComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +59,7 @@ import { NalogZaIsplatuComponent } from './nalog-za-isplatu/nalog-za-isplatu.com
   providers: [
     DrzaveService,
     NaseljenaMestaService,
+    RacunLicaService,
     KlijentService,
     RacunLicaService,
     ValuteService,

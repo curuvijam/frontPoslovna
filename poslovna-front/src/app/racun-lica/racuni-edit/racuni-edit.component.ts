@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NovRacunLica } from '../../modeli/nov-racunLica';
 import { RacunLica } from '../../modeli/racunLica';
 import { RacunLicaService } from '../../services/racun-lica.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { Params } from '@angular/router/src/shared';
+import { Location } from '@angular/common';
+import { KlijentFizicko } from '../../klijent/klijent-fizicko';
+
+import { KlijentPravno } from '../../klijent/klijent-pravno';
 
 @Component({
   selector: 'app-racuni-edit',
@@ -13,7 +17,9 @@ import { Params } from '@angular/router/src/shared';
 })
 export class RacuniEditComponent implements OnInit {
 
+  @Input() racunShow: RacunLica;
   
+  klijentFizickoId: string;
   datum1: Date = new Date("MM/dd/yyyy");
   model: any = {};
   date1 = new Date(this.model.datum_otvaranja);
@@ -21,11 +27,13 @@ export class RacuniEditComponent implements OnInit {
   racunId: string;
   racunEdit: RacunLica;
   racuni: RacunLica[];
+  
 
   
 
   constructor(private racunService: RacunLicaService,
               
+              private location: Location,
               private route: ActivatedRoute) { }
 
 
@@ -38,10 +46,12 @@ export class RacuniEditComponent implements OnInit {
               noviRacunSubmit(forma: NgForm) {
                 this.noviRacun.br_racuna = forma.value.br_racuna;
                 this.noviRacun.datum_otvaranja = forma.value.datum_otvaranja;
+                
                
-                this.racunService.insertRacun(this.noviRacun).subscribe();
+                this.racunService.insertRacunFizicko(this.noviRacun, this.klijentFizickoId).subscribe();
+                console.log(this.noviRacun)
                 forma.reset();
-                //this.location.back();
+                this.location.back();
               }
             
             
@@ -51,12 +61,12 @@ export class RacuniEditComponent implements OnInit {
                 this.racunEdit.datum_otvaranja = forma.value.datum_otvaranja;
                 this.racunService.updateRacun(this.racunEdit).subscribe();
                 forma.reset();
-                //this.location.back();
+                this.location.back();
               }
             
               racunEdt() {
                 this.racunService.updateRacun(this.racunEdit).subscribe();
-                //this.location.back();
+                this.location.back();
               }
             
 
@@ -69,6 +79,15 @@ export class RacuniEditComponent implements OnInit {
       );
       this.getRacun(); 
       
+  }
+
+  if (this.route.snapshot.url[0].path === 'racuni-edit') {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.klijentFizickoId = params['klijentFizickoId'];
+        
+      }
+    );
   }
 }
 

@@ -28,6 +28,8 @@ export class RacunLicaComponent implements OnInit {
     this.racuniService.getRacun(this.racunId).subscribe((racun) => this.racunEdit = racun);
   }
 
+  
+
   deleteRacun(racun: RacunLica){
     this.racuniService.deleteRacun(racun).subscribe();
     this.racuni = this.racuni.filter(k => k!== racun);
@@ -38,7 +40,7 @@ export class RacunLicaComponent implements OnInit {
   
 
 
-  constructor(private racuniService: RacunLicaService, private location: Location) { }
+  constructor(private racuniService: RacunLicaService, private location: Location,) { }
 
   ngOnInit() {
     this.getRacuniLica();

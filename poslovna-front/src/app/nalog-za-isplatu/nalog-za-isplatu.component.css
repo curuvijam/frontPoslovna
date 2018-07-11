@@ -1,0 +1,323 @@
+.bankslip__wrapper {
+  margin-top: 30mm;
+  marks: cross cross;
+}
+
+.bankslip {
+  background-color: #2e3c44;
+  border: solid 4px #5b7787;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3mm;
+  height: 100mm;
+  line-height: 1.2em;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  padding: 6mm;
+  position: relative;
+  width: 209mm;
+}
+.bankslip,
+.bankslip * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.bankslip__inner {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.bankslip__inner:before {
+  border-right: solid 1px #2e3c44;
+  content: "";
+  display: block;
+  height: 73mm;
+  left: 104mm;
+  position: absolute;
+  top: 14mm;
+}
+@media print {
+  .bankslip__inner {
+    background-color: transparent;
+  }
+}
+
+.bankslip-title {
+  color: #fff;
+  font-size: 4.95mm;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+[class*="bankslip__form-item"] {
+  z-index: 10;
+}
+[class*="bankslip__form-item"] label {
+  display: block;
+  padding-bottom: 1mm;
+  color: #fff;
+}
+
+[class*="bankslip__form-item"] input,
+[class*="bankslip__form-item"] textarea {
+  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0);
+  border: solid 3px #f66b3a;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3.9mm;
+  padding: 0.5mm 2mm;
+}
+[class*="bankslip__form-item"] input,
+[class*="bankslip__form-item"] textarea, [class*="bankslip__form-item"] input:focus,
+[class*="bankslip__form-item"] textarea:focus {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+[class*="bankslip__form-item"] input:focus,
+[class*="bankslip__form-item"] textarea:focus {
+  border-color: #f66b3a;
+  border-style: dashed;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+[class*="bankslip__form-item"] input.bankslip-border-double,
+[class*="bankslip__form-item"] textarea.bankslip-border-double {
+  border-width: 0.7mm;
+}
+[class*="bankslip__form-item"] input.bankslip-border-double:focus,
+[class*="bankslip__form-item"] textarea.bankslip-border-double:focus {
+  border-width: 1px;
+}
+
+.bankslip__field-size--xxs {
+  height: 7mm;
+  width: 12mm;
+}
+
+.bankslip__field-size--xs {
+  height: 7mm;
+  width: 12mm;
+}
+
+.bankslip__field-size--s {
+  height: 7mm;
+  width: 51mm;
+}
+
+.bankslip__field-size--m {
+  height: 7mm;
+  width: 71mm;
+}
+
+.bankslip__field-size--l {
+  height: 7mm;
+  width: 93mm;
+}
+
+.bankslip__field-size--xl {
+  height: 7mm;
+  width: 88.5mm;
+}
+
+.bankslip__field-size--xxl {
+  height: 7mm;
+  width: 91mm;
+}
+
+.bankslip__field-size--xxxl {
+  height: 15mm;
+  width: 91mm;
+}
+
+[class*="bankslip__form-item"] input,
+[class*="bankslip__form-item"] textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3mm;
+  color: #fff;
+}
+[class*="bankslip__form-item"] textarea {
+  resize: none;
+}
+
+.bankslip__form-item--payer, .bankslip__form-item--purpose, .bankslip__form-item--recipient {
+  position: absolute;
+  left: 6mm;
+}
+
+.bankslip-title, .bankslip__form-item--value, .bankslip__form-item--code, .bankslip__form-item--currency, .bankslip__form-item--account, .bankslip__form-item--model, .bankslip__form-item--reference {
+  position: absolute;
+  right: 5.5mm;
+}
+
+.bankslip-title {
+  right: 6mm;
+  top: 6.5mm;
+}
+
+.bankslip__form-item--payer {
+  top: 9.5mm;
+}
+
+.bankslip__form-item--purpose {
+  top: 30.5mm;
+}
+.bankslip__form-item--purpose textarea {
+  height: 14.5mm;
+}
+
+.bankslip__form-item--recipient {
+  top: 51mm;
+}
+
+.bankslip__form-item--value {
+  top: 13.5mm;
+}
+
+.bankslip__form-item--code {
+  right: 80mm;
+  top: 10mm;
+  width: 14mm;
+}
+
+.bankslip__form-item--currency {
+  right: 64mm;
+  top: 13.5mm;
+}
+.bankslip__form-item--currency input {
+  width: 12.5mm;
+}
+
+.bankslip__form-item--account {
+  top: 27mm;
+}
+
+.bankslip__form-item--model {
+  right: 83.5mm;
+  top: 40.5mm;
+}
+.bankslip__form-item--model input {
+  width: 10.5mm;
+}
+
+.bankslip__form-item--reference {
+  top: 40.5mm;
+}
+
+.bankslip__form-item--stamp {
+  bottom: 16.5mm;
+  left: 6mm;
+  position: absolute;
+}
+.bankslip__form-item--stamp input,
+.bankslip__form-item--stamp input:focus {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+.bankslip__form-item--stamp label {
+  padding-bottom: 0;
+  padding-top: 1mm;
+}
+
+.bankslip__form-item--date {
+  bottom: 8mm;
+  left: 49mm;
+  position: absolute;
+  z-index: 5;
+}
+.bankslip__form-item--date input,
+.bankslip__form-item--date input:focus {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+.bankslip__form-item--date input {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  width: 48mm;
+}
+.bankslip__form-item--date label {
+  padding-bottom: 0;
+  padding-top: 1mm;
+}
+
+.bankslip__form-item--date2 {
+  bottom: 8mm;
+  left: 115mm;
+  position: absolute;
+}
+.bankslip__form-item--date2 input,
+.bankslip__form-item--date2 input:focus {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+.bankslip__form-item--date2 label {
+  padding-bottom: 0;
+  padding-top: 1mm;
+}
+
+.bankslip__form-number {
+  bottom: 3.5mm;
+  font-size: 2.4mm;
+  left: 96mm;
+  position: absolute;
+  color: #fff;
+}
+
+.bankslip__number {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  bottom: 3.5mm;
+  cursor: pointer;
+  font-size: 2.7mm;
+  outline: none;
+  right: 5mm;
+  padding: 1mm 0;
+  position: absolute;
+  text-align: center;
+  width: 3mm;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+@media print {
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

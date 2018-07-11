@@ -23,6 +23,7 @@ import { RacunLica } from './modeli/racunLica';
 import { RacunLicaComponent } from './racun-lica/racun-lica.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { ValuteService } from './services/valute.service';
+import { NalogZaIsplatuComponent } from './nalog-za-isplatu/nalog-za-isplatu.component';
 
 
 
@@ -40,7 +41,8 @@ import { ValuteService } from './services/valute.service';
     KlijentEditComponent,
     KlijentiListComponent,
     RacunLicaComponent,
-    RacuniEditComponent
+    RacuniEditComponent,
+    NalogZaIsplatuComponent
   ],
   imports: [
     BrowserModule,

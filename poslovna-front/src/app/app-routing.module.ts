@@ -9,6 +9,7 @@ import { RouterModule, Routes} from '@angular/router';
 import { DrzaveEditComponent } from './drzave/drzave-edit/drzave-edit.component';
 import { NaseljenaMestaEditComponent } from './naseljena-mesta/naseljena-mesta-edit/naseljena-mesta-edit.component';
 import { KlijentiListComponent } from './klijent/klijenti-list/klijenti-list.component';
+import { NalogZaIsplatuComponent } from './nalog-za-isplatu/nalog-za-isplatu.component';
 
 const routes: Routes = [
   { path: 'drzave', component: DrzaveComponent} ,
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: 'naseljena-mesta', component: NaseljenaMestaComponent},
   { path: 'klijenti', component: KlijentiListComponent},
   { path: 'klijenti/klijent/pravno/:klijentId', component: KlijentEditComponent},
-  { path: 'klijenti/klijent/fizicko/:klijentId', component: KlijentEditComponent}
+  { path: 'klijenti/klijent/fizicko/:klijentId', component: KlijentEditComponent},
+  { path: 'nalogZaIsplatu', component: NalogZaIsplatuComponent}
 ];
 
 @NgModule({

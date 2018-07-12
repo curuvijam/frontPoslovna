@@ -28,6 +28,10 @@ import { ValuteComponent } from './valute/valute.component';
 import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component';
 import { LoginComponent } from './login/login.component';
 import { ToggleLoginService } from './services/toggle-login.service';
+import { KursnaListaComponent } from './kursna-lista/kursna-lista.component';
+import { KursValutiComponent } from './kurs-valuti/kurs-valuti.component';
+import { KursnaListaService } from './services/kursna-lista.service';
+import { KursValutiService } from './services/kurs-valuti.service';
 
 
 
@@ -50,7 +54,9 @@ import { ToggleLoginService } from './services/toggle-login.service';
     NalogZaIsplatuComponent,
     ValuteComponent,
     ValuteEditComponent,
-    LoginComponent
+    LoginComponent,
+    KursnaListaComponent,
+    KursValutiComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +73,8 @@ import { ToggleLoginService } from './services/toggle-login.service';
     RacunLicaService,
     ValuteService,
     ToggleLoginService,
+    KursnaListaService,
+    KursValutiService
   ],
   bootstrap: [AppComponent]
 })

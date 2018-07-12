@@ -13,6 +13,8 @@ import { NalogZaIsplatuComponent } from './nalog-za-isplatu/nalog-za-isplatu.com
 import { ValuteComponent } from './valute/valute.component';
 import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component';
 import { LoginComponent } from './login/login.component';
+import { KursValutiComponent } from './kurs-valuti/kurs-valuti.component';
+import { KursnaListaComponent } from './kursna-lista/kursna-lista.component';
 
 
 
@@ -46,7 +48,10 @@ const routes: Routes = [
   { path: 'racuni-edit/:klijentFizickoId', component: RacuniEditComponent},
   { path: 'valute', component: ValuteComponent},
   { path: 'valute-edit', component: ValuteEditComponent},
-  { path: 'valute/:valutaId', component: ValuteEditComponent}
+  { path: 'valute/:valutaId', component: ValuteEditComponent},
+  { path: 'kurs-valuti', component: KursValutiComponent},
+  { path: 'kursna-lista', component: KursnaListaComponent}
+
 
 ];
 

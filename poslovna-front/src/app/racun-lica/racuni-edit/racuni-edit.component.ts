@@ -20,6 +20,7 @@ export class RacuniEditComponent implements OnInit {
   @Input() racunShow: RacunLica;
   
   klijentFizickoId: string;
+  klijentPravnoId: string;
   datum1: Date = new Date("MM/dd/yyyy");
   model: any = {};
   date1 = new Date(this.model.datum_otvaranja);
@@ -46,9 +47,24 @@ export class RacuniEditComponent implements OnInit {
               noviRacunSubmit(forma: NgForm) {
                 this.noviRacun.br_racuna = forma.value.br_racuna;
                 this.noviRacun.datum_otvaranja = forma.value.datum_otvaranja;
-                
+                if (this.route.snapshot.url[0].path === 'racuni-edit') {
+                  this.route.params.subscribe(
+                    (params: Params) => {
+                      this.klijentFizickoId = params['klijentFizickoId'];
+                      this.racunService.insertRacunFizicko(this.noviRacun, this.klijentFizickoId).subscribe();
+                    }
+                  );
+                }
+               else if(this.route.snapshot.url[1].path =="racuni-edit")
+                {
+                  this.route.params.subscribe(
+                    (params:Params) =>{
+                      this.klijentPravnoId = params['klijentPravnoId'];
+                      this.racunService.inserRacunPravno(this.noviRacun, this.klijentPravnoId).subscribe();
+                    }
+                  );
+                }
                
-                this.racunService.insertRacunFizicko(this.noviRacun, this.klijentFizickoId).subscribe();
                 console.log(this.noviRacun)
                 forma.reset();
                 this.location.back();
@@ -78,17 +94,9 @@ export class RacuniEditComponent implements OnInit {
         }
       );
       this.getRacun(); 
-      
   }
 
-  if (this.route.snapshot.url[0].path === 'racuni-edit') {
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.klijentFizickoId = params['klijentFizickoId'];
-        
-      }
-    );
-  }
+ 
 }
 
 }

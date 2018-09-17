@@ -1,3 +1,4 @@
+import { AnalitikaService } from './services/analitika.service';
 import { KlijentEditComponent } from './klijent/klijent-edit/klijent-edit.component';
 import { KlijentService } from './klijent/klijent.service';
 import { KlijentComponent } from './klijent/klijent.component';
@@ -74,7 +75,8 @@ import { KursValutiService } from './services/kurs-valuti.service';
     ValuteService,
     ToggleLoginService,
     KursnaListaService,
-    KursValutiService
+    KursValutiService,
+    AnalitikaService
   ],
   bootstrap: [AppComponent]
 })

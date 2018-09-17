@@ -26,12 +26,13 @@
 
       <div class="bankslip__form-item--currency">
         <label>валута</label>
-        <input type="text" name="" class="bankslip__field-size--xxs bankslip-border-double" >
+        <input type="text" name="" class="bankslip__field-size--xxs bankslip-border-double">
       </div>
 
       <div class="bankslip__form-item--value">
         <label>износ</label>
-        <input type="text" name="" class="bankslip__field-size--s bankslip-border-double" name="iznos" [(ngModel)]="analitikaIzvoda.iznos" #iznos="ngModel">
+        <input type="text" name="" class="bankslip__field-size--s bankslip-border-double" name="iznos" [(ngModel)]="analitikaIzvoda.iznos"
+          #iznos="ngModel">
       </div>
 
       <div class="bankslip__form-item--account">
@@ -73,5 +74,12 @@
 
 </div>
 <div class="container">
-    <button class="btn btn-primary">Potvrdi</button>
+  <button class="btn btn-primary">Potvrdi</button>
+</div>
+
+<div class="container">
+  <form name="form" (ngSubmit)="f.form.valid && upload()" class="register-form" #f="ngForm" novalidate>
+    <input type="file" accept="text/xml" name="fajl" (change)="onChange($event)" [(ngModel)]="file" required #fajl="ngModel">
+    <button>Ucitaj nalog i obradi</button>
+  </form>
 </div>

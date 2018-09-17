@@ -1,3 +1,4 @@
+import { AnalitikaService } from './../services/analitika.service';
 import { AnalitikaIzvoda } from './../modeli/analitika-izvoda';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class NalogZaIsplatuComponent implements OnInit {
 
   analitikaIzvoda: AnalitikaIzvoda;
-  constructor() { }
+  file: any;
+
+  constructor(private analitikaService: AnalitikaService) { }
 
   ngOnInit() {
+  }
+
+  onChange(event) {
+    this.file = event.srcElement.files;
+    console.log(this.file);
+  }
+
+  upload() {
+    this.analitikaService.loadFromFile(this.file).subscribe();
   }
 
 }

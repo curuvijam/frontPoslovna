@@ -33,6 +33,8 @@ import { KursnaListaComponent } from './kursna-lista/kursna-lista.component';
 import { KursValutiComponent } from './kurs-valuti/kurs-valuti.component';
 import { KursnaListaService } from './services/kursna-lista.service';
 import { KursValutiService } from './services/kurs-valuti.service';
+import { DnevnoStanjeRacunaService } from './services/dnevno-stanje-racuna.service';
+import { BankaService } from './services/banka.service';
 
 
 
@@ -76,7 +78,9 @@ import { KursValutiService } from './services/kurs-valuti.service';
     ToggleLoginService,
     KursnaListaService,
     KursValutiService,
-    AnalitikaService
+    AnalitikaService,
+    DnevnoStanjeRacunaService,
+    BankaService
   ],
   bootstrap: [AppComponent]
 })

@@ -15,6 +15,7 @@ import { ValuteEditComponent } from './valute/valute-edit/valute-edit.component'
 import { LoginComponent } from './login/login.component';
 import { KursValutiComponent } from './kurs-valuti/kurs-valuti.component';
 import { KursnaListaComponent } from './kursna-lista/kursna-lista.component';
+import { NalogZaUplatuComponent } from './nalog-za-uplatu/nalog-za-uplatu.component';
 
 
 
@@ -50,7 +51,8 @@ const routes: Routes = [
   { path: 'valute-edit', component: ValuteEditComponent},
   { path: 'valute/:valutaId', component: ValuteEditComponent},
   { path: 'kurs-valuti', component: KursValutiComponent},
-  { path: 'kursna-lista', component: KursnaListaComponent}
+  { path: 'kursna-lista', component: KursnaListaComponent},
+  {path:  'nalogZaUplatu', component: NalogZaUplatuComponent}
 
 
 ];

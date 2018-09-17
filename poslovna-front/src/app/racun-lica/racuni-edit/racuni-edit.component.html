@@ -13,7 +13,7 @@
       <div class="form-group">
         <label for="valuta">Valuta</label>
         <form>
-          <select [(ngModel)]="noviRacun.valuta" id="valuta" name="valuta" class="form-control">
+          <select [(ngModel)]="noviRacun.valute" id="valuta" name="valuta" class="form-control">
             <option *ngFor="let valutaShow of valute"
             [ngValue]="valutaShow">
             {{valutaShow.naziv}}</option>

@@ -32,7 +32,7 @@ export class RacuniEditComponent implements OnInit {
   racunEdit: RacunLica;
   racuni: RacunLica[];
   valute: Valuta[];
-  valuta: Valuta
+  valuta: Valuta;
 
   
 
@@ -51,7 +51,7 @@ export class RacuniEditComponent implements OnInit {
               noviRacunSubmit(forma: NgForm) {
                 this.noviRacun.br_racuna = forma.value.br_racuna;
                 this.noviRacun.datum_otvaranja = forma.value.datum_otvaranja;
-              
+                
                 if (this.route.snapshot.url[0].path === 'racuni-edit') {
                   this.route.params.subscribe(
                     (params: Params) => {
@@ -65,7 +65,7 @@ export class RacuniEditComponent implements OnInit {
                   this.route.params.subscribe(
                     (params:Params) =>{
                       this.klijentPravnoId = params['klijentPravnoId'];
-                      this.racunService.inserRacunPravno(this.noviRacun, this.klijentPravnoId).subscribe();
+                      this.racunService.insertRacunPravno(this.noviRacun, this.klijentPravnoId).subscribe();
                     }
                   );
                 }

@@ -10,6 +10,17 @@
         <label for="naziv">Datum otvaranja</label>
         <input type="date"  id="datum" name="datum_otvaranja"  class="form-control"   required ngModel #datumOtvaranja="ngModel">
       </div>
+      <div class="form-group">
+        <label for="valuta">Valuta</label>
+        <form>
+          <select [(ngModel)]="noviRacun.valuta" id="valuta" name="valuta" class="form-control">
+            <option *ngFor="let valutaShow of valute"
+            [ngValue]="valutaShow">
+            {{valutaShow.naziv}}</option>
+          </select>
+          <p>SELEKTOVANO: {{valuta}}</p>
+        </form>
+      </div>
 
 
       <button type="submit" class="button" [disabled]="!noviRacunForm.valid">Dodaj</button>

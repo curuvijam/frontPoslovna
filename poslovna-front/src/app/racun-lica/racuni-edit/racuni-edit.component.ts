@@ -9,6 +9,9 @@ import { Location } from '@angular/common';
 import { KlijentFizicko } from '../../klijent/klijent-fizicko';
 
 import { KlijentPravno } from '../../klijent/klijent-pravno';
+import { ValuteService } from '../../services/valute.service';
+import { Valuta } from '../../modeli/valuta';
+import { NovaValuta } from '../../modeli/nova-valuta';
 
 @Component({
   selector: 'app-racuni-edit',
@@ -18,22 +21,23 @@ import { KlijentPravno } from '../../klijent/klijent-pravno';
 export class RacuniEditComponent implements OnInit {
 
   @Input() racunShow: RacunLica;
-  
+  @Input() valutaShow: Valuta;
   klijentFizickoId: string;
   klijentPravnoId: string;
   datum1: Date = new Date("MM/dd/yyyy");
   model: any = {};
   date1 = new Date(this.model.datum_otvaranja);
-  noviRacun: NovRacunLica = new NovRacunLica("",this.date1, false);
+  noviRacun: NovRacunLica = new NovRacunLica("",this.date1, false,null);
   racunId: string;
   racunEdit: RacunLica;
   racuni: RacunLica[];
-  
+  valute: Valuta[];
+  valuta: Valuta
 
   
 
   constructor(private racunService: RacunLicaService,
-              
+              private valuteService: ValuteService,
               private location: Location,
               private route: ActivatedRoute) { }
 
@@ -47,6 +51,7 @@ export class RacuniEditComponent implements OnInit {
               noviRacunSubmit(forma: NgForm) {
                 this.noviRacun.br_racuna = forma.value.br_racuna;
                 this.noviRacun.datum_otvaranja = forma.value.datum_otvaranja;
+              
                 if (this.route.snapshot.url[0].path === 'racuni-edit') {
                   this.route.params.subscribe(
                     (params: Params) => {
@@ -84,7 +89,13 @@ export class RacuniEditComponent implements OnInit {
                 this.racunService.updateRacun(this.racunEdit).subscribe();
                 this.location.back();
               }
-            
+
+  getValute(): void {
+    this.valuteService.getValute()
+      .subscribe(valute => this.valute = valute);
+    
+  }
+      
 
   ngOnInit() {
     if(this.route.snapshot.params['racunId']){
@@ -95,7 +106,7 @@ export class RacuniEditComponent implements OnInit {
       );
       this.getRacun(); 
   }
-
+  this.getValute();
  
 }
 

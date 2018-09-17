@@ -1,3 +1,5 @@
+import { Drzava } from "./drzava";
+
 
 export class Valuta{
     constructor(
@@ -6,6 +8,7 @@ export class Valuta{
         public sifra: string,
         public naziv: string,
         public domicilna: boolean,
+        public drzava: Drzava
       
         
     ){}

@@ -24,7 +24,7 @@
             <button class="btn btn-outline-warning" [routerLink]="['klijent/fizicko/' + klijent.id]">Izmeni</button>
           </td>
           <td>
-            <button class="btn btn-outline-success" [routerLink]="['/racuni-edit/' + klijent.id]">Dodaj racun</button>
+            <button class="btn btn-outline-success" [routerLink]="['/racuni-edit/fizicko/' + klijent.id]">Dodaj racun</button>
           </td>
           <td>
             <button class="btn btn-outline-danger" (click)="obrisiFizicko(klijent.id)">Obrisi</button>
@@ -56,7 +56,7 @@
               <button class="btn btn-outline-warning" [routerLink]="['klijent/pravno/' + klijent.id]">Izmeni</button>
             </td>
             <td>
-              <button class="btn btn-outline-success" [routerLink]="['/racuni-edit/' + klijent.id]">Dodaj racun</button>
+              <button class="btn btn-outline-success" [routerLink]="['/racuni-edit/pravno/' + klijent.id]">Dodaj racun</button>
             </td>
             <td>
               <button class="btn btn-outline-danger" (click)="obrisiPravno(klijent.id)">Obrisi</button>

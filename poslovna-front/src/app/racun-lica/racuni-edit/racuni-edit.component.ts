@@ -52,7 +52,8 @@ export class RacuniEditComponent implements OnInit {
                 this.noviRacun.br_racuna = forma.value.br_racuna;
                 this.noviRacun.datum_otvaranja = forma.value.datum_otvaranja;
                 
-                if (this.route.snapshot.url[0].path === 'racuni-edit') {
+            
+               if (this.route.snapshot.url[1].path === 'fizicko') {
                   this.route.params.subscribe(
                     (params: Params) => {
                       this.klijentFizickoId = params['klijentFizickoId'];
@@ -60,7 +61,7 @@ export class RacuniEditComponent implements OnInit {
                     }
                   );
                 }
-               else if(this.route.snapshot.url[1].path =="racuni-edit")
+               else if(this.route.snapshot.url[1].path == 'pravno')
                 {
                   this.route.params.subscribe(
                     (params:Params) =>{
@@ -69,6 +70,7 @@ export class RacuniEditComponent implements OnInit {
                     }
                   );
                 }
+              
                
                 console.log(this.noviRacun)
                 forma.reset();

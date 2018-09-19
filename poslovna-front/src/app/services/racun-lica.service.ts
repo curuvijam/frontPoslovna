@@ -18,7 +18,6 @@ const httpOptions = {
 
 @Injectable()
 export class RacunLicaService {
-
   private url = 'http://localhost:8080/racuni';
   private url1 = 'http://localhost:8080/racuni/klijentFizicko';
   private url2 = 'http://localhost:8080/racuni/klijentPravno';
@@ -27,41 +26,47 @@ export class RacunLicaService {
     return this.http.get<RacunLica[]>(this.url);
   }
 
-  getRacun(id: string): Observable<RacunLica>{
-    return this.http.get<RacunLica>(this.url + '/' + id)
+  getRacun(id: string): Observable<RacunLica> {
+    return this.http.get<RacunLica>(this.url + '/' + id);
   }
 
-  insertRacunFizicko(kategorija: NovRacunLica,klijentId: string): Observable<NovRacunLica>{
-    return this.http.post<NovRacunLica>(this.url1 + '/' + klijentId, kategorija, httpOptions).pipe(
-      catchError(this.handleError<NovRacunLica>('insertRacunFizicko'))
-    )
+  insertRacunFizicko(
+    kategorija: NovRacunLica,
+    klijentId: string
+  ): Observable<NovRacunLica> {
+    return this.http
+      .post<NovRacunLica>(this.url1 + '/' + klijentId, kategorija, httpOptions)
+      .pipe(catchError(this.handleError<NovRacunLica>('insertRacunFizicko')));
   }
 
-
-  inserRacunPravno(kategorija: NovRacunLica,klijentId: string): Observable<NovRacunLica>{
-    return this.http.post<NovRacunLica>(this.url2 + '/' + klijentId, kategorija, httpOptions).pipe(
-      catchError(this.handleError<NovRacunLica>('insertRacunPravno'))
-    )
+  insertRacunPravno(
+    kategorija: NovRacunLica,
+    klijentId: string
+  ): Observable<NovRacunLica> {
+    return this.http
+      .post<NovRacunLica>(this.url2 + '/' + klijentId, kategorija, httpOptions)
+      .pipe(catchError(this.handleError<NovRacunLica>('insertRacunPravno')));
   }
 
-  updateRacun(kategorija: RacunLica): Observable<RacunLica>{
+  updateRacun(kategorija: RacunLica): Observable<RacunLica> {
     const id = typeof kategorija === 'string' ? kategorija : kategorija.id;
     const url = `${this.url}/${id}`;
 
-    return this.http.put<RacunLica>(url, kategorija, httpOptions).pipe(catchError(this.handleError<RacunLica>('updateRacun')))
+    return this.http
+      .put<RacunLica>(url, kategorija, httpOptions)
+      .pipe(catchError(this.handleError<RacunLica>('updateRacun')));
   }
 
-  deleteRacun(racun: RacunLica | string):Observable<RacunLica>{
+  deleteRacun(racun: RacunLica | string): Observable<RacunLica> {
     const id = typeof racun === 'string' ? racun : racun.id;
     const url = `${this.url}/${id}`;
 
-    return this.http.delete<RacunLica>(url, httpOptions).pipe(catchError(this.handleError<RacunLica>('deleteRacun')))
+    return this.http
+      .delete<RacunLica>(url, httpOptions)
+      .pipe(catchError(this.handleError<RacunLica>('deleteRacun')));
   }
 
-
-
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -73,6 +78,5 @@ export class RacunLicaService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-
-}
+  }
 }

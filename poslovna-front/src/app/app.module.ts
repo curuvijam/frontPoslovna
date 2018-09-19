@@ -35,6 +35,7 @@ import { KursnaListaService } from './services/kursna-lista.service';
 import { KursValutiService } from './services/kurs-valuti.service';
 import { DnevnoStanjeRacunaService } from './services/dnevno-stanje-racuna.service';
 import { BankaService } from './services/banka.service';
+import { NalogZaUplatuComponent } from './nalog-za-uplatu/nalog-za-uplatu.component';
 
 
 
@@ -59,7 +60,8 @@ import { BankaService } from './services/banka.service';
     ValuteEditComponent,
     LoginComponent,
     KursnaListaComponent,
-    KursValutiComponent
+    KursValutiComponent,
+    NalogZaUplatuComponent
   ],
   imports: [
     BrowserModule,

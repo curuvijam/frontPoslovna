@@ -4,6 +4,9 @@ import { RacunLicaService } from '../services/racun-lica.service';
 import { Location } from '@angular/common';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { NovRacunLica } from '../modeli/nov-racunLica';
+import { KlijentPravno } from '../klijent/klijent-pravno';
+import { KlijentFizicko } from '../klijent/klijent-fizicko';
+import { KlijentService } from '../klijent/klijent.service';
 
 
 @Component({
@@ -18,7 +21,8 @@ export class RacunLicaComponent implements OnInit {
   racuni: RacunLica[];
   racunId: string;
   racunEdit: RacunLica;
-  
+
+
 
   getRacuniLica(): void{
     this.racuniService.getRacuni().subscribe(racuni => this.racuni = racuni);
@@ -28,19 +32,14 @@ export class RacunLicaComponent implements OnInit {
     this.racuniService.getRacun(this.racunId).subscribe((racun) => this.racunEdit = racun);
   }
 
-  
 
   deleteRacun(racun: RacunLica){
     this.racuniService.deleteRacun(racun).subscribe();
     this.racuni = this.racuni.filter(k => k!== racun);
   }
- 
-  
 
-  
-
-
-  constructor(private racuniService: RacunLicaService, private location: Location,) { }
+  constructor(private racuniService: RacunLicaService, private location: Location,
+            private klijentService: KlijentService) { }
 
   ngOnInit() {
     this.getRacuniLica();

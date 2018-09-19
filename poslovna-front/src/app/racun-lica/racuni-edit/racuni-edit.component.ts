@@ -52,22 +52,21 @@ export class RacuniEditComponent implements OnInit {
     this.noviRacun.br_racuna = forma.value.br_racuna;
     this.noviRacun.datum_otvaranja = forma.value.datum_otvaranja;
 
-    if (this.route.snapshot.url[0].path === 'racuni-edit') {
-      this.route.params.subscribe((params: Params) => {
-        this.klijentFizickoId = params['klijentFizickoId'];
-        this.racunService
-          .insertRacunFizicko(this.noviRacun, this.klijentFizickoId)
-          .subscribe();
-      });
-    } else if (this.route.snapshot.url[1].path == 'racuni-edit') {
-      this.route.params.subscribe((params: Params) => {
-        this.klijentPravnoId = params['klijentPravnoId'];
-        this.racunService
-          .inserRacunPravno(this.noviRacun, this.klijentPravnoId)
-          .subscribe();
-      });
+    if (this.route.snapshot.url[1].path === 'fizicko') {
+      this.route.params.subscribe(
+        (params: Params) => {
+          this.klijentFizickoId = params['klijentFizickoId'];
+          this.racunService.insertRacunFizicko(this.noviRacun, this.klijentFizickoId).subscribe();
+        }
+      );
+    } else if (this.route.snapshot.url[1].path === 'pravno') {
+      this.route.params.subscribe(
+        (params: Params) => {
+          this.klijentPravnoId = params['klijentPravnoId'];
+          this.racunService.insertRacunPravno(this.noviRacun, this.klijentPravnoId).subscribe();
+        }
+      );
     }
-
     console.log(this.noviRacun);
     forma.reset();
     this.location.back();

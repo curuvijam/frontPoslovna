@@ -19,95 +19,84 @@ import { NovaValuta } from '../../modeli/nova-valuta';
   styleUrls: ['./racuni-edit.component.css']
 })
 export class RacuniEditComponent implements OnInit {
-
-  @Input() racunShow: RacunLica;
-  @Input() valutaShow: Valuta;
+  @Input()
+  racunShow: RacunLica;
+  @Input()
+  valutaShow: Valuta;
   klijentFizickoId: string;
   klijentPravnoId: string;
-  datum1: Date = new Date("MM/dd/yyyy");
+  datum1: Date = new Date('MM/dd/yyyy');
   model: any = {};
   date1 = new Date(this.model.datum_otvaranja);
-  noviRacun: NovRacunLica = new NovRacunLica("",this.date1, false,null);
+  noviRacun: NovRacunLica = new NovRacunLica('', this.date1, false, null);
   racunId: string;
   racunEdit: RacunLica;
   racuni: RacunLica[];
   valute: Valuta[];
-  valuta: Valuta
+  valuta: Valuta;
 
-  
+  constructor(
+    private racunService: RacunLicaService,
+    private valuteService: ValuteService,
+    private location: Location,
+    private route: ActivatedRoute
+  ) {}
 
-  constructor(private racunService: RacunLicaService,
-              private valuteService: ValuteService,
-              private location: Location,
-              private route: ActivatedRoute) { }
+  getRacun() {
+    this.racunService
+      .getRacun(this.racunId)
+      .subscribe(racun => (this.racunEdit = racun));
+  }
 
+  noviRacunSubmit(forma: NgForm) {
+    this.noviRacun.br_racuna = forma.value.br_racuna;
+    this.noviRacun.datum_otvaranja = forma.value.datum_otvaranja;
 
-              getRacun() {
-                this.racunService.getRacun(this.racunId).subscribe(
-                  (racun) => this.racunEdit = racun
-                );
-              }
+    if (this.route.snapshot.url[0].path === 'racuni-edit') {
+      this.route.params.subscribe((params: Params) => {
+        this.klijentFizickoId = params['klijentFizickoId'];
+        this.racunService
+          .insertRacunFizicko(this.noviRacun, this.klijentFizickoId)
+          .subscribe();
+      });
+    } else if (this.route.snapshot.url[1].path == 'racuni-edit') {
+      this.route.params.subscribe((params: Params) => {
+        this.klijentPravnoId = params['klijentPravnoId'];
+        this.racunService
+          .inserRacunPravno(this.noviRacun, this.klijentPravnoId)
+          .subscribe();
+      });
+    }
 
-              noviRacunSubmit(forma: NgForm) {
-                this.noviRacun.br_racuna = forma.value.br_racuna;
-                this.noviRacun.datum_otvaranja = forma.value.datum_otvaranja;
-              
-                if (this.route.snapshot.url[0].path === 'racuni-edit') {
-                  this.route.params.subscribe(
-                    (params: Params) => {
-                      this.klijentFizickoId = params['klijentFizickoId'];
-                      this.racunService.insertRacunFizicko(this.noviRacun, this.klijentFizickoId).subscribe();
-                    }
-                  );
-                }
-               else if(this.route.snapshot.url[1].path =="racuni-edit")
-                {
-                  this.route.params.subscribe(
-                    (params:Params) =>{
-                      this.klijentPravnoId = params['klijentPravnoId'];
-                      this.racunService.inserRacunPravno(this.noviRacun, this.klijentPravnoId).subscribe();
-                    }
-                  );
-                }
-               
-                console.log(this.noviRacun)
-                forma.reset();
-                this.location.back();
-              }
-            
-            
-            
-              racunUpdateSubmit(forma: NgForm){
-                this.racunEdit.br_racuna = forma.value.br_racuna;
-                this.racunEdit.datum_otvaranja = forma.value.datum_otvaranja;
-                this.racunService.updateRacun(this.racunEdit).subscribe();
-                forma.reset();
-                this.location.back();
-              }
-            
-              racunEdt() {
-                this.racunService.updateRacun(this.racunEdit).subscribe();
-                this.location.back();
-              }
+    console.log(this.noviRacun);
+    forma.reset();
+    this.location.back();
+  }
+
+  racunUpdateSubmit(forma: NgForm) {
+    this.racunEdit.br_racuna = forma.value.br_racuna;
+    this.racunEdit.datum_otvaranja = forma.value.datum_otvaranja;
+    this.racunService.updateRacun(this.racunEdit).subscribe();
+    forma.reset();
+    this.location.back();
+  }
+
+  racunEdt() {
+    this.racunService.updateRacun(this.racunEdit).subscribe();
+    this.location.back();
+  }
 
   getValute(): void {
-    this.valuteService.getValute()
-      .subscribe(valute => this.valute = valute);
-    
+    this.valuteService.getValute().subscribe(valute => (this.valute = valute));
   }
-      
 
   ngOnInit() {
-    if(this.route.snapshot.params['racunId']){
-      this.route.params.subscribe(
-        (params: Params) => {
-          this.racunId = params["racunId"];
-        }
-      );
-      this.getRacun(); 
+    if (this.route.snapshot.params['racunId']) {
+      this.route.params.subscribe((params: Params) => {
+        this.racunId = params['racunId'];
+      });
+      this.getRacun();
+    }
+    this.getValute();
   }
-  this.getValute();
- 
-}
-
 }

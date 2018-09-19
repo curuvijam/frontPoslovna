@@ -37,7 +37,7 @@ export class RacunLicaService {
     )
   }
 
-  
+
   inserRacunPravno(kategorija: NovRacunLica,klijentId: string): Observable<NovRacunLica>{
     return this.http.post<NovRacunLica>(this.url2 + '/' + klijentId, kategorija, httpOptions).pipe(
       catchError(this.handleError<NovRacunLica>('insertRacunPravno'))
@@ -57,8 +57,8 @@ export class RacunLicaService {
 
     return this.http.delete<RacunLica>(url, httpOptions).pipe(catchError(this.handleError<RacunLica>('deleteRacun')))
   }
-  
-  
+
+
 
 
   constructor(private http: HttpClient) { }

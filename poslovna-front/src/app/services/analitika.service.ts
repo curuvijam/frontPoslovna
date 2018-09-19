@@ -14,6 +14,7 @@ const httpOptions = {
 @Injectable()
 export class AnalitikaService {
   private url_analitikaFile = 'http://localhost:8080/analitikaFile';
+  private url_analitikaFileUplata ='http://localhost:8080/analitikaFileUplata';
 
   constructor(private http: HttpClient) {}
 
@@ -24,6 +25,20 @@ export class AnalitikaService {
     formData.append('file', file);
 
     const req = new HttpRequest('POST', this.url_analitikaFile, formData, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
+  }
+
+  loadFromFileUplata(file: File): Observable<HttpEvent<{}>> {
+    // tslint:disable-next-line:prefer-const
+    let formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', this.url_analitikaFileUplata, formData, {
       reportProgress: true,
       responseType: 'text'
     });

@@ -3,7 +3,7 @@
     <h1 class="list-group-item-heading" > Sifra : {{naseljenaMestaShow.sifra_mesta}}</h1>
     <h2 class="list-group-item-heading" > Naziv : {{naseljenaMestaShow.naziv}}</h2>
     <h2 class="list-group-item-heading" > Ptt oznaka : {{naseljenaMestaShow.ptt_oznaka}}</h2>
-    <h2 class="list-group-item-heading" > Drzava : {{naseljenaMestaShow.drzava}}</h2>
+    <h2 class="list-group-item-heading" > Drzava : {{naseljenaMestaShow.drzava|json}}</h2>
   
     <span class="pull-right"> 
       <button class="btn btn-primary" [routerLink]="['/naseljena-mesta/' + naseljenaMestaShow.id]">Izmeni</button>

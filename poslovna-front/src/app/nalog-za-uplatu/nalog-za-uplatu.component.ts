@@ -24,7 +24,7 @@ export class NalogZaUplatuComponent implements OnInit {
   }
 
   upload() {
-    this.analitikaService.loadFromFile(this.file).subscribe();
+    this.analitikaService.loadFromFileUplata(this.file).subscribe();
   }
 
 

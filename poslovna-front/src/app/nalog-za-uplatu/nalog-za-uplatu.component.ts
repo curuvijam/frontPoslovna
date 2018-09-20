@@ -78,5 +78,4 @@ export class NalogZaUplatuComponent implements OnInit {
     this.getRacuniLica();
   }
 
-  
 }

@@ -58,7 +58,6 @@ export class AnalitikaService {
     return this.http.request(req);
   }
 
-<<<<<<< HEAD
   insertNalogZaUplatu(nalogzaUplatu: AnalitikaIzvoda): Observable<NovaUplata> {
     return this.http.post<AnalitikaIzvoda>(this.urlUplata, nalogzaUplatu, httpOptions).pipe(
       catchError(this.handleError<AnalitikaIzvoda>('insertNalogZaUplatu'))
@@ -69,18 +68,6 @@ export class AnalitikaService {
     return this.http.post<AnalitikaIzvoda>(this.urlIsplata, nalogZaIsplatu, httpOptions).pipe(
       catchError(this.handleError<AnalitikaIzvoda>('insertNalogZaIsplatu'))
     );
-=======
-  insertNalogZaUplatu(nalogzaUplatu: NovaUplata): Observable<NovaUplata> {
-    return this.http
-      .post<NovaUplata>(this.urlUplata, nalogzaUplatu, httpOptions)
-      .pipe(catchError(this.handleError<NovaUplata>('insertNalogZaUplatu')));
-  }
-
-  insertNalogZaIsplatu(nalogZaIsplatu: NovaIsplata): Observable<NovaIsplata> {
-    return this.http
-      .post<NovaIsplata>(this.urlIsplata, nalogZaIsplatu, httpOptions)
-      .pipe(catchError(this.handleError<NovaIsplata>('insertNalogZaIsplatu')));
->>>>>>> d47bb2955afc2b7bc53976d3ad4d866148be56dd
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

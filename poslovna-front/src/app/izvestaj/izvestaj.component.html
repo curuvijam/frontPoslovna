@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="col-md-auto">
+    <h2>Izvestaj za racun: {{racunLica?.br_racuna}}</h2>
+    <form name="form" (ngSubmit)="f.form.valid && prikaziIzvestaj()" class="register-form" #f="ngForm" validate>
+      <label>Pocetak:</label>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dPocetak.valid }">
+        <input type="date" class="form-control" placeholder="Pocetak" name="dPocetak" [(ngModel)]="datumPoc" required #dPocetak="ngModel"
+        />
+        <div class="help-block" *ngIf="f.submitted && !datumPoc.valid">Pocetak je obavezan</div>
+      </div>
+      <!-- ime i prezime -->
+      <label>Kraj:</label>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dKraj.valid }">
+        <input type="date" class="form-control" placeholder="Kraj" name="dKraj" [(ngModel)]="datumKraj" required #dKraj="ngModel"
+        />
+        <div class="help-block" *ngIf="f.submitted && !dKraj.valid">Kraj je obavezan</div>
+      </div>
+      <button class="btn btn-primary">Prikazi izvestaj</button>
+    </form>
+  </div>
+</div>

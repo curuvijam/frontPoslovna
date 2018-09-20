@@ -17,7 +17,8 @@ import { RacunLicaService } from '../services/racun-lica.service';
 export class NalogZaIsplatuComponent implements OnInit {
   valutaShow: Valuta;
   analitikaIzvoda: AnalitikaIzvoda;
-  file: any;
+  selectedFiles: FileList;
+  file: File;
   datum1: Date = new Date('MM/dd/yyyy');
   model: any = {};
   date1 = new Date(this.model.datum_otvaranja);
@@ -46,11 +47,13 @@ export class NalogZaIsplatuComponent implements OnInit {
   ) {}
 
   onChange(event) {
-    this.file = event.srcElement.files;
-    console.log(this.file);
+    this.selectedFiles = event.target.files;
   }
 
   upload() {
+    this.file = this.selectedFiles.item(0);
+    console.log('upload() ');
+    console.log(this.file);
     this.analitikaService.loadFromFile(this.file).subscribe();
   }
 

@@ -24,7 +24,25 @@ export class NalogZaIsplatuComponent implements OnInit {
   model: any = {};
   date1 = new Date(this.model.datum_prijema);
 
-  nalogZaIsplatu: AnalitikaIzvoda = new AnalitikaIzvoda(0,"","","",this.date1,this.date1,null,0,"","",0,"",false,0,0,"",null);
+  nalogZaIsplatu: AnalitikaIzvoda = new AnalitikaIzvoda(
+    0,
+    '',
+    '',
+    '',
+    this.date1,
+    this.date1,
+    null,
+    0,
+    '',
+    '',
+    0,
+    '',
+    false,
+    0,
+    0,
+    '',
+    null
+  );
   valuta: Valuta;
   racun_duznika: RacunLica;
   valute: Valuta[];
@@ -50,7 +68,6 @@ export class NalogZaIsplatuComponent implements OnInit {
   }
 
   noviNalogIsplataSubmit(forma: NgForm) {
-    
     this.nalogZaIsplatu.duznik = forma.value.duznik;
     this.nalogZaIsplatu.iznos = forma.value.iznos;
     this.nalogZaIsplatu.datum_prijema = forma.value.datum_prijema;
@@ -72,12 +89,8 @@ export class NalogZaIsplatuComponent implements OnInit {
     this.valuteService.getValute().subscribe(valute => (this.valute = valute));
   }
 
-ngOnInit() {
-
-  this.getValute();
-  this.getRacuniLica();
-
+  ngOnInit() {
+    this.getValute();
+    this.getRacuniLica();
+  }
 }
-}
-
-

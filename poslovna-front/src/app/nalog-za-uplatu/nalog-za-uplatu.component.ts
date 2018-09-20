@@ -20,7 +20,8 @@ export class NalogZaUplatuComponent implements OnInit {
   model: any = {};
   date1 = new Date(this.model.datum_otvaranja);
   analitikaIzvoda: AnalitikaIzvoda;
-  file: any;
+  selectedFiles: FileList;
+  file: File;
   nalogZaUplatu:  AnalitikaIzvoda = new AnalitikaIzvoda(0,"","","",this.date1,this.date1,null,0,"","",0,"",false,0,0,"",null);
   valuta: Valuta;
   racun_duznika: RacunLica;
@@ -36,11 +37,12 @@ export class NalogZaUplatuComponent implements OnInit {
               ) { }
 
   onChange(event) {
-    this.file = event.srcElement.files;
+    this.selectedFiles = event.target.files;
     console.log(this.file);
   }
 
   upload() {
+    this.file = this.selectedFiles.item(0);
     this.analitikaService.loadFromFileUplata(this.file).subscribe();
   }
 
@@ -66,12 +68,12 @@ export class NalogZaUplatuComponent implements OnInit {
   getValute(): void {
     this.valuteService.getValute().subscribe(valute => (this.valute = valute));
   }
-  
-  
+
+
   getRacun(){
     this.racuniService.getRacun(this.racunId).subscribe((racun) => this.racun_duznika = racun);
   }
-  
+
 
   ngOnInit() {
     this.getValute();

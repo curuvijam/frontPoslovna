@@ -1,25 +1,25 @@
 <div class="bankslip__wrapper">
     <form id="bankslip" class="bankslip">
       <div class="bankslip__inner">
-  
+
         <div class="bankslip-title">Налог за уплату</div>
         <form #novaFormaUplata="ngForm" (ngSubmit) = "noviNalogUplataSubmit(novaFormaUplata)">
         <div class="bankslip__form-item--payer">
           <label for="duznik">уплатилац</label>
           <textarea type="text" id="duznik" name="duznik" class="bankslip__field-size--xxxl" required ngModel #duznik="ngModel"></textarea>
         </div>
-  
+
         <div class="bankslip__form-item--purpose">
           <label for="svrha_placanja">сврха уплате</label>
           <textarea name="svrha_placanja" id="svrha_placanja" class="bankslip__field-size--xxxl" required ngModel #svrha="ngModel"></textarea>
         </div>
-  
+
         <div class="bankslip__form-item--recipient">
           <label for="poverilac_primalac">прималац</label>
           <textarea type="text" id="poverilac_primalac" name="poverilac_primalac" class="bankslip__field-size--xxxl" required ngModel #poverilacPrimalac="ngModel"></textarea>
         </div>
-  
-   
+
+
         <div class="bankslip__form-item--currency">
           <div class="form-group">
             <label for="valuta">валута</label>
@@ -33,7 +33,7 @@
             </form>
           </div>
         </div>
-  
+
         <div class="bankslip__form-item--value">
           <label for="iznos">износ</label>
           <input type="number" id="iznos" name="iznos" class="bankslip__field-size--s bankslip-border-double" required ngModel #iznos="ngModel">
@@ -54,39 +54,38 @@
             </div>
           </div>
 
-          
+
         <div class="bankslip__form-item--model">
           <label for="model_odobrenja">модел</label>
           <input type="text" id="model_odobrenja" name="model_odobrenja" class="bankslip__field-size--xxs bankslip-border-double" required ngModel #modelZ="ngModel">
         </div>
-  
+
         <div class="bankslip__form-item--reference">
           <label for="poziv_na_brO">позив на број (одобрење)</label>
           <input type="text" id="poziv_na_brO" name="poziv_na_brO" class="bankslip__field-size--m bankslip-border-double" required ngModel #PozBrO="ngModel">
         </div>
-  
-        
+
+
         <div class="bankslip__form-item--date">
           <label for="datum_prijema">датум пријема</label>
           <input type="date" id="datum_prijema" name="datum_prijema" class="bankslip__field-size--s" required ngModel #DatPrijema="ngModel">
         </div>
-  
-      
-  
+
+
+
         <span class="bankslip__form-number">Образац бр. 1</span>
         <input type="text" class="bankslip__number" size="1" value="1">
-  
-    
-          <button type="submit" class="btn btn-primary" [disabled]="!novaFormaUplata.valid">Potvrdi</button> 
+
+
+          <button type="submit" class="btn btn-primary" [disabled]="!novaFormaUplata.valid">Potvrdi</button>
         </form>
       </div>
     </form>
   </div>
-  
+
   <div class="container">
     <form name="form" (ngSubmit)="f.form.valid && upload()" class="register-form" #f="ngForm" novalidate>
-      <input type="file" accept="text/xml" name="fajl" (change)="onChange($event)" [(ngModel)]="file" required #fajl="ngModel">
+      <input type="file" accept="text/xml" name="fajl" (change)="onChange($event)">
       <button>Ucitaj nalog i obradi</button>
     </form>
   </div>
-  

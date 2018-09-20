@@ -1,6 +1,6 @@
 import { AnalitikaService } from './../services/analitika.service';
 import { AnalitikaIzvoda } from './../modeli/analitika-izvoda';
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NovaIsplata } from '../modeli/nova-isplata';
 import { Valuta } from '../modeli/valuta';
 import { RacunLica } from '../modeli/racunLica';
@@ -21,18 +21,29 @@ export class NalogZaIsplatuComponent implements OnInit {
   datum1: Date = new Date('MM/dd/yyyy');
   model: any = {};
   date1 = new Date(this.model.datum_otvaranja);
-  nalogZaIsplatu: NovaIsplata = new NovaIsplata("","","",null,null,0,"",this.date1,0);
+  nalogZaIsplatu: NovaIsplata = new NovaIsplata(
+    '',
+    '',
+    '',
+    null,
+    null,
+    0,
+    '',
+    this.date1,
+    0
+  );
   valuta: Valuta;
   racun_duznika: RacunLica;
   valute: Valuta[];
   racuni: RacunLica[];
-  racunId: string;
+  br_racuna: string;
 
-  constructor(private analitikaService: AnalitikaService,
-              private location: Location,
-              private valuteService: ValuteService,
-              private racuniService: RacunLicaService) { }
-
+  constructor(
+    private analitikaService: AnalitikaService,
+    private location: Location,
+    private valuteService: ValuteService,
+    private racuniService: RacunLicaService
+  ) {}
 
   onChange(event) {
     this.file = event.srcElement.files;
@@ -43,7 +54,8 @@ export class NalogZaIsplatuComponent implements OnInit {
     this.analitikaService.loadFromFile(this.file).subscribe();
   }
 
-  noviNalogIsplataSubmit(forma: NgForm){
+  noviNalogIsplataSubmit(forma: NgForm) {
+    this.getRacun();
     this.nalogZaIsplatu.duznik = forma.value.duznik;
     this.nalogZaIsplatu.iznos = forma.value.iznos;
     this.nalogZaIsplatu.datum_prijema = forma.value.datum_prijema;
@@ -52,31 +64,31 @@ export class NalogZaIsplatuComponent implements OnInit {
     this.nalogZaIsplatu.poziv_na_brZ = forma.value.poziv_na_brZ;
     this.nalogZaIsplatu.svrha_placanja = forma.value.svrha_placanja;
     this.nalogZaIsplatu.valuta = this.valuta;
-    this.getRacun();
+    console.log(this.racun_duznika);
     this.nalogZaIsplatu.racun_duznika = this.racun_duznika;
-
     this.analitikaService.insertNalogZaIsplatu(this.nalogZaIsplatu).subscribe();
     forma.reset();
     this.location.back();
+  }
+  getRacuniLica(): void {
+    this.racuniService.getRacuni().subscribe(racuni => (this.racuni = racuni));
+  }
+  getValute(): void {
+    this.valuteService.getValute().subscribe(valute => (this.valute = valute));
+  }
 
-}
-getRacuniLica(): void{
-  this.racuniService.getRacuni().subscribe(racuni => this.racuni = racuni);
-}
-getValute(): void {
-  this.valuteService.getValute().subscribe(valute => (this.valute = valute));
-}
+  getRacun() {
+    this.racuniService
+      .getRacun(this.br_racuna)
+      .subscribe(
+        racun => {
+          this.racun_duznika = racun;
+        }
+      );
+  }
 
-
-getRacun(){
-  this.racuniService.getRacun(this.racunId).subscribe((racun) => this.racun_duznika = racun);
-}
-
-ngOnInit() {
-  this.getValute();
-  this.getRacuniLica();
-
-}
-
-
+  ngOnInit() {
+    this.getValute();
+    this.getRacuniLica();
+  }
 }

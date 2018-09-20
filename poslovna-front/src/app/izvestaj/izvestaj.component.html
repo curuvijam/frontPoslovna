@@ -1,12 +1,12 @@
 <div class="container">
   <div class="col-md-auto">
     <h2>Izvestaj za racun: {{racunLica?.br_racuna}}</h2>
-    <form name="form" (ngSubmit)="f.form.valid && prikaziIzvestaj()" class="register-form" #f="ngForm" validate>
+    <form name="form" (ngSubmit)="f.form.valid && prikaziIzvestaj()" class="register-form" #f="ngForm" novalidate>
       <label>Pocetak:</label>
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dPocetak.valid }">
         <input type="date" class="form-control" placeholder="Pocetak" name="dPocetak" [(ngModel)]="datumPoc" required #dPocetak="ngModel"
         />
-        <div class="help-block" *ngIf="f.submitted && !datumPoc.valid">Pocetak je obavezan</div>
+        <div class="help-block" *ngIf="f.submitted && !dPocetak.valid">Pocetak je obavezan</div>
       </div>
       <!-- ime i prezime -->
       <label>Kraj:</label>
@@ -17,5 +17,30 @@
       </div>
       <button class="btn btn-primary">Prikazi izvestaj</button>
     </form>
+  </div>
+</div>
+<div class="container">
+  <div class="col-md-auto">
+    <h1>Izvestaji za izabrani datum:</h1>
+    <table class="table table-striped table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Datum prometa</th>
+          <th scope="col">Prethodno stanje</th>
+          <th scope="col">Promet u korist</th>
+          <th scope="col">Promet na teret</th>
+          <th scope="col">Novo stanje</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let stanje of stanja">
+        <tr>
+          <th scope="row">{{stanje?.datum_prometa | date}}</th>
+          <td>{{stanje?.prethodno_stanje}}</td>
+          <td>{{stanje?.promet_korist}}</td>
+          <td>{{stanje?.promet_teren}}</td>
+          <td>{{stanje?.novo_stanje}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

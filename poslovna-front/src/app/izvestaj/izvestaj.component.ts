@@ -1,3 +1,5 @@
+import { DnevnoStanjeRacuna } from './../modeli/dnevno-stanje-racuna';
+import { DnevnoStanjeRacunaService } from './../services/dnevno-stanje-racuna.service';
 import { RacunLicaService } from './../services/racun-lica.service';
 import { RacunLica } from './../modeli/racunLica';
 import { KlijentService } from './../klijent/klijent.service';
@@ -15,12 +17,15 @@ import { Component, OnInit } from '@angular/core';
 export class IzvestajComponent implements OnInit {
   racunLica: RacunLica;
   racunId: string;
-  datumPoc: Date = new Date('yyyy-MM-dd');
-  datumKraj: Date = new Date('yyyy-MM-dd');
+  datumPoc = new Date('yyyy-MM-dd');
+  datumKraj = new Date('yyyy-MM-dd');
+
+  stanja: DnevnoStanjeRacuna[];
 
   constructor(
     private route: ActivatedRoute,
-    private racunService: RacunLicaService
+    private racunService: RacunLicaService,
+    private dnevnoStanjeRacunaService: DnevnoStanjeRacunaService
   ) {}
 
   ngOnInit() {
@@ -43,5 +48,11 @@ export class IzvestajComponent implements OnInit {
     console.log('usao u prikaziIzvestaj()');
     console.log(this.datumPoc);
     console.log(this.datumKraj);
+    this.dnevnoStanjeRacunaService.getDnevnoStanjeRacunaByRacun(this.racunId, this.datumPoc, this.datumKraj).subscribe(
+      data => {
+        this.stanja = data;
+        console.log(this.stanja);
+      }
+    );
   }
 }

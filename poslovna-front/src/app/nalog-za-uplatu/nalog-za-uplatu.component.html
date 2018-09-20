@@ -6,17 +6,17 @@
         <form #novaFormaUplata="ngForm" (ngSubmit) = "noviNalogUplataSubmit(novaFormaUplata)">
         <div class="bankslip__form-item--payer">
           <label for="duznik">уплатилац</label>
-          <textarea type="text" id="duznik" name="duznik" class="bankslip__field-size--xxxl"></textarea>
+          <textarea type="text" id="duznik" name="duznik" class="bankslip__field-size--xxxl" required ngModel #duznik="ngModel"></textarea>
         </div>
   
         <div class="bankslip__form-item--purpose">
           <label for="svrha_placanja">сврха уплате</label>
-          <textarea name="svrha_placanja" id="svrha_placanja" class="bankslip__field-size--xxxl"></textarea>
+          <textarea name="svrha_placanja" id="svrha_placanja" class="bankslip__field-size--xxxl" required ngModel #svrha="ngModel"></textarea>
         </div>
   
         <div class="bankslip__form-item--recipient">
           <label for="poverilac_primalac">прималац</label>
-          <textarea type="text" id="poverilac_primalac" name="poverilac_primalac" class="bankslip__field-size--xxxl"></textarea>
+          <textarea type="text" id="poverilac_primalac" name="poverilac_primalac" class="bankslip__field-size--xxxl" required ngModel #poverilacPrimalac="ngModel"></textarea>
         </div>
   
    
@@ -36,28 +36,35 @@
   
         <div class="bankslip__form-item--value">
           <label for="iznos">износ</label>
-          <input type="number" id="iznos" name="iznos" class="bankslip__field-size--s bankslip-border-double">
+          <input type="number" id="iznos" name="iznos" class="bankslip__field-size--s bankslip-border-double" required ngModel #iznos="ngModel">
         </div>
-  
         <div class="bankslip__form-item--account">
-          <label for="racun_duznika">рачун примаоца</label>
-          <input type="text" id="racun_duznika" name="racun_duznika" [(ngModel)]= "racunId" class="bankslip__field-size--xl bankslip-border-double">
-        </div>
-  
+            <div class="form-group">
+              <label for="racun_duznika">racun primaoca</label>
+              <form>
+                <select [(ngModel)]="racun_duznika" id="racun_duznika" name="racun_duznika" class="form-control" >
+                  <option *ngFor="let racuniLicaShow of racuni"
+                  [ngValue]="racuniLicaShow">
+                  {{racuniLicaShow.br_racuna}}</option>
+                </select>
+                <p>SELEKTOVANO: {{racun_duznika}}</p>
+              </form>
+            </div>
+          </div>
         <div class="bankslip__form-item--model">
           <label for="model_odobrenja">модел</label>
-          <input type="text" id="model_odobrenja" name="model_odobrenja" class="bankslip__field-size--xxs bankslip-border-double">
+          <input type="text" id="model_odobrenja" name="model_odobrenja" class="bankslip__field-size--xxs bankslip-border-double" required ngModel #modelZ="ngModel">
         </div>
   
         <div class="bankslip__form-item--reference">
           <label for="poziv_na_brO">позив на број (одобрење)</label>
-          <input type="text" id="poziv_na_brO" name="poziv_na_brO" class="bankslip__field-size--m bankslip-border-double">
+          <input type="text" id="poziv_na_brO" name="poziv_na_brO" class="bankslip__field-size--m bankslip-border-double" required ngModel #PozBrO="ngModel">
         </div>
   
         
         <div class="bankslip__form-item--date">
           <label for="datum_prijema">датум пријема</label>
-          <input type="text" id="datum_prijema" name="datum_prijema" class="bankslip__field-size--s">
+          <input type="date" id="datum_prijema" name="datum_prijema" class="bankslip__field-size--s" required ngModel #DatPrijema="ngModel">
         </div>
   
       

@@ -21,12 +21,13 @@ export class NalogZaUplatuComponent implements OnInit {
   date1 = new Date(this.model.datum_otvaranja);
   analitikaIzvoda: AnalitikaIzvoda;
   file: any;
-  nalogZaUplatu: NovaUplata =  new NovaUplata("","","",null,null,0,"",this.date1,0);
+  nalogZaUplatu:  AnalitikaIzvoda = new AnalitikaIzvoda(0,"","","",this.date1,this.date1,null,0,"","",0,"",false,0,0,"",null);
   valuta: Valuta;
   racun_duznika: RacunLica;
   racuni: RacunLica[];
   racunId: string;
   valute: Valuta[];
+  racuniLicaShow: RacunLica;
 
 
   constructor(private analitikaService: AnalitikaService,
@@ -52,7 +53,6 @@ export class NalogZaUplatuComponent implements OnInit {
       this.nalogZaUplatu.poziv_na_brO = forma.value.poziv_na_brO;
       this.nalogZaUplatu.svrha_placanja = forma.value.svrha_placanja;
       this.nalogZaUplatu.valuta = this.valuta;
-      this.getRacun();
       this.nalogZaUplatu.racun_duznika = this.racun_duznika;
 
       this.analitikaService.insertNalogZaUplatu(this.nalogZaUplatu).subscribe();

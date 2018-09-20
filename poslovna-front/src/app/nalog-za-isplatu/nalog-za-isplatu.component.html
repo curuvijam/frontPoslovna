@@ -1,22 +1,23 @@
 <div class="bankslip__wrapper">
-  <form id="bankslip" class="bankslip">
-    <div class="bankslip__inner">
-
+  <form  #novaForma="ngForm" (ngSubmit) = "noviNalogIsplataSubmit(novaForma)" id="bankslip" class="bankslip">
+      
+     <div class="bankslip__inner">
+       
       <div class="bankslip-title">Налог за исплату</div>
-      <form #novaForma="ngForm" (ngSubmit) = "noviNalogIsplataSubmit(novaForma)">
+
       <div class="bankslip__form-item--payer">
         <label for="duznik">платилац</label>
-        <textarea type="text" id="duznik" name="duznik" class="bankslip__field-size--xxxl"></textarea>
+        <input type="text" id="duznik" name="duznik" class="bankslip__field-size--xxxl" required ngModel #duznik="ngModel">
       </div>
 
       <div class="bankslip__form-item--purpose">
         <label for="svrha_placanja">сврха исплате</label>
-        <textarea name="svrha_placanja" id="svrha_placanja" class="bankslip__field-size--xxxl"></textarea>
+        <input name="svrha_placanja" id="svrha_placanja" class="bankslip__field-size--xxxl" required ngModel #svrhaPlacanja="ngModel">
       </div>
 
       <div class="bankslip__form-item--recipient">
         <label for="poverilac_primalac">прималац</label>
-        <textarea type="text" id="poverilac_primalac" name="poverilac_primalac" class="bankslip__field-size--xxxl"></textarea>
+        <input type="text" id="poverilac_primalac" name="poverilac_primalac" class="bankslip__field-size--xxxl" required ngModel #poverilacPrimalac="ngModel">
       </div>
 
  
@@ -36,28 +37,44 @@
 
       <div class="bankslip__form-item--value">
         <label for="iznos">износ</label>
-        <input type="number" id="iznos" name="iznos" class="bankslip__field-size--s bankslip-border-double">
+        <input type="number" id="iznos" name="iznos" class="bankslip__field-size--s bankslip-border-double" required ngModel #iznos="ngModel">
       </div>
 
-      <div class="bankslip__form-item--account">
+     <!-- <div class="bankslip__form-item--account">
         <label for="racun_duznika">рачун платиоца</label>
         <input type="text" id="racun_duznika" name="racun_duznika" [(ngModel)]= "racunId" class="bankslip__field-size--xl bankslip-border-double">
+      </div>-->
+
+
+      <div class="bankslip__form-item--account">
+        <div class="form-group">
+          <label for="racun_duznika">racun platioca</label>
+          <form>
+            <select [(ngModel)]="racun_duznika" id="racun_duznika" name="racun_duznika" class="form-control" >
+              <option *ngFor="let racuniLicaShow of racuni"
+              [ngValue]="racuniLicaShow">
+              {{racuniLicaShow.br_racuna}}</option>
+            </select>
+            <p>SELEKTOVANO: {{racun_duznika}}</p>
+          </form>
+        </div>
       </div>
+
 
       <div class="bankslip__form-item--model">
         <label for="model_odobrenja">модел</label>
-        <input type="text" id="model_odobrenja" name="model_odobrenja" class="bankslip__field-size--xxs bankslip-border-double">
+        <input type="text" id="model_odobrenja" name="model_odobrenja" class="bankslip__field-size--xxs bankslip-border-double" required ngModel #model="ngModel">
       </div>
 
       <div class="bankslip__form-item--reference">
         <label for="poziv_na_brZ">позив на број (задужење)</label>
-        <input type="text" id="poziv_na_brZ" name="poziv_na_brZ" class="bankslip__field-size--m bankslip-border-double">
+        <input type="text" id="poziv_na_brZ" name="poziv_na_brZ" class="bankslip__field-size--m bankslip-border-double" required ngModel #pozivNaBrz="ngModel">
       </div>
 
       
       <div class="bankslip__form-item--date">
         <label for="datum_prijema">датум пријема</label>
-        <input type="text" id="datum_prijema" name="datum_prijema" class="bankslip__field-size--s">
+        <input type="date" id="datum_prijema" name="datum_prijema" class="bankslip__field-size--s" required ngModel #datumPrijema="ngModel">
       </div>
 
     
@@ -66,11 +83,13 @@
       <input type="text" class="bankslip__number" size="1" value="1">
 
   
-        <button type="submit" class="btn btn-primary" [disabled]="!novaForma.valid">Potvrdi</button> 
-      </form>
-    </div>
-  </form>
+    <button type="submit" class="btn btn-primary" [disabled]="!novaForma.valid">Potvrdi</button> 
+     
+
 </div>
+</form>
+</div>
+
 
 <div class="container">
   <form name="form" (ngSubmit)="f.form.valid && upload()" class="register-form" #f="ngForm" novalidate>

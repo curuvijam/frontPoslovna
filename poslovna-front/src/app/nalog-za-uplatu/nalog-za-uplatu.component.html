@@ -1,85 +1,81 @@
 <div class="bankslip__wrapper">
-  <form id="bankslip" class="bankslip">
-    <div class="bankslip__inner">
-
-      <div class="bankslip-title">Налог за уплату</div>
-
-      <div class="bankslip__form-item--payer">
-        <label>платилац</label>
-        <textarea name="" class="bankslip__field-size--xxxl"></textarea>
+    <form id="bankslip" class="bankslip">
+      <div class="bankslip__inner">
+  
+        <div class="bankslip-title">Налог за уплату</div>
+        <form #novaFormaUplata="ngForm" (ngSubmit) = "noviNalogUplataSubmit(novaFormaUplata)">
+        <div class="bankslip__form-item--payer">
+          <label for="duznik">уплатилац</label>
+          <textarea type="text" id="duznik" name="duznik" class="bankslip__field-size--xxxl"></textarea>
+        </div>
+  
+        <div class="bankslip__form-item--purpose">
+          <label for="svrha_placanja">сврха уплате</label>
+          <textarea name="svrha_placanja" id="svrha_placanja" class="bankslip__field-size--xxxl"></textarea>
+        </div>
+  
+        <div class="bankslip__form-item--recipient">
+          <label for="poverilac_primalac">прималац</label>
+          <textarea type="text" id="poverilac_primalac" name="poverilac_primalac" class="bankslip__field-size--xxxl"></textarea>
+        </div>
+  
+   
+        <div class="bankslip__form-item--currency">
+          <div class="form-group">
+            <label for="valuta">валута</label>
+            <form>
+              <select [(ngModel)]="valuta" id="valuta" name="valuta" class="form-control">
+                <option *ngFor="let valutaShow of valute"
+                [ngValue]="valutaShow">
+                {{valutaShow.naziv}}</option>
+              </select>
+              <p>SELEKTOVANO: {{valuta}}</p>
+            </form>
+          </div>
+        </div>
+  
+        <div class="bankslip__form-item--value">
+          <label for="iznos">износ</label>
+          <input type="number" id="iznos" name="iznos" class="bankslip__field-size--s bankslip-border-double">
+        </div>
+  
+        <div class="bankslip__form-item--account">
+          <label for="racun_duznika">рачун примаоца</label>
+          <input type="text" id="racun_duznika" name="racun_duznika" [(ngModel)]= "racunId" class="bankslip__field-size--xl bankslip-border-double">
+        </div>
+  
+        <div class="bankslip__form-item--model">
+          <label for="model_odobrenja">модел</label>
+          <input type="text" id="model_odobrenja" name="model_odobrenja" class="bankslip__field-size--xxs bankslip-border-double">
+        </div>
+  
+        <div class="bankslip__form-item--reference">
+          <label for="poziv_na_brO">позив на број (одобрење)</label>
+          <input type="text" id="poziv_na_brO" name="poziv_na_brO" class="bankslip__field-size--m bankslip-border-double">
+        </div>
+  
+        
+        <div class="bankslip__form-item--date">
+          <label for="datum_prijema">датум пријема</label>
+          <input type="text" id="datum_prijema" name="datum_prijema" class="bankslip__field-size--s">
+        </div>
+  
+      
+  
+        <span class="bankslip__form-number">Образац бр. 1</span>
+        <input type="text" class="bankslip__number" size="1" value="1">
+  
+    
+          <button type="submit" class="btn btn-primary" [disabled]="!novaFormaUplata.valid">Potvrdi</button> 
+        </form>
       </div>
-
-      <div class="bankslip__form-item--purpose">
-        <label>сврха исплате</label>
-        <textarea name="" class="bankslip__field-size--xxxl"></textarea>
-      </div>
-
-      <div class="bankslip__form-item--recipient">
-        <label>прималац</label>
-        <textarea name="" class="bankslip__field-size--xxxl"></textarea>
-      </div>
-
-      <div class="bankslip__form-item--code">
-        <label>шифра плаћања</label>
-        <input type="text" name="" class="bankslip__field-size--xxs bankslip-border-double">
-      </div>
-
-      <div class="bankslip__form-item--currency">
-        <label>валута</label>
-        <input type="text" name="" class="bankslip__field-size--xxs bankslip-border-double">
-      </div>
-
-      <div class="bankslip__form-item--value">
-        <label>износ</label>
-        <input type="text" name="" class="bankslip__field-size--s bankslip-border-double" name="iznos" [(ngModel)]="analitikaIzvoda.iznos"
-          #iznos="ngModel">
-      </div>
-
-      <div class="bankslip__form-item--account">
-        <label>рачун платиоца</label>
-        <input type="text" name="" class="bankslip__field-size--xl bankslip-border-double">
-      </div>
-
-      <div class="bankslip__form-item--model">
-        <label>модел</label>
-        <input type="text" name="" class="bankslip__field-size--xxs bankslip-border-double">
-      </div>
-
-      <div class="bankslip__form-item--reference">
-        <label>позив на број (задужење)</label>
-        <input type="text" name="" class="bankslip__field-size--m bankslip-border-double">
-      </div>
-
-      <div class="bankslip__form-item--stamp">
-        <input type="text" name="" class="bankslip__field-size--s">
-        <label>потпис и печат платиоца</label>
-      </div>
-
-      <div class="bankslip__form-item--date">
-        <input type="text" name="" class="bankslip__field-size--s">
-        <label>датум пријема</label>
-      </div>
-
-      <div class="bankslip__form-item--date2">
-        <input type="text" name="" class="bankslip__field-size--s">
-        <label>датум извршења</label>
-      </div>
-
-      <span class="bankslip__form-number">Образац бр. 1</span>
-      <input type="text" class="bankslip__number" size="1" value="1">
-
-    </div>
-    <!-- /.bankslip__inner -->
-  </form>
-
-</div>
-<div class="container">
-  <button class="btn btn-primary">Potvrdi</button>
-</div>
-
-<div class="container">
-  <form name="form" (ngSubmit)="f.form.valid && upload()" class="register-form" #f="ngForm" novalidate>
-    <input type="file" accept="text/xml" name="fajl" (change)="onChange($event)" [(ngModel)]="file" required #fajl="ngModel">
-    <button>Ucitaj nalog i obradi</button>
-  </form>
-</div>
+    </form>
+  </div>
+  
+  <div class="container">
+    <form name="form" (ngSubmit)="f.form.valid && upload()" class="register-form" #f="ngForm" novalidate>
+      <input type="file" accept="text/xml" name="fajl" (change)="onChange($event)" [(ngModel)]="file" required #fajl="ngModel">
+      <button>Ucitaj nalog i obradi</button>
+    </form>
+  </div>
+  

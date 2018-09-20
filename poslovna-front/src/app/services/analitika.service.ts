@@ -10,6 +10,7 @@ import { NovaUplata } from '../modeli/nova-uplata';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { NovaIsplata } from '../modeli/nova-isplata';
+import { AnalitikaIzvoda } from '../modeli/analitika-izvoda';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-type': 'application/json' })
@@ -58,17 +59,18 @@ export class AnalitikaService {
     return this.http.request(req);
   }
 
-  insertNalogZaUplatu(nalogzaUplatu: NovaUplata): Observable<NovaUplata> {
-    return this.http
-      .post<NovaUplata>(this.urlUplata, nalogzaUplatu, httpOptions)
-      .pipe(catchError(this.handleError<NovaUplata>('insertNalogZaUplatu')));
+  insertNalogZaUplatu(nalogzaUplatu: AnalitikaIzvoda): Observable<NovaUplata> {
+    return this.http.post<AnalitikaIzvoda>(this.urlUplata, nalogzaUplatu, httpOptions).pipe(
+      catchError(this.handleError<AnalitikaIzvoda>('insertNalogZaUplatu'))
+    );
   }
 
-  insertNalogZaIsplatu(nalogZaIsplatu: NovaIsplata): Observable<NovaIsplata> {
-    return this.http
-      .post<NovaIsplata>(this.urlIsplata, nalogZaIsplatu, httpOptions)
-      .pipe(catchError(this.handleError<NovaIsplata>('insertNalogZaIsplatu')));
+  insertNalogZaIsplatu(nalogZaIsplatu: AnalitikaIzvoda): Observable<AnalitikaIzvoda> {
+    return this.http.post<AnalitikaIzvoda>(this.urlIsplata, nalogZaIsplatu, httpOptions).pipe(
+      catchError(this.handleError<AnalitikaIzvoda>('insertNalogZaIsplatu'))
+    );
   }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure

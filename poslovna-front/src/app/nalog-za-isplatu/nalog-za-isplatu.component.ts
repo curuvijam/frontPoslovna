@@ -16,23 +16,15 @@ import { RacunLicaService } from '../services/racun-lica.service';
 })
 export class NalogZaIsplatuComponent implements OnInit {
   valutaShow: Valuta;
+  racuniLicaShow: RacunLica;
   analitikaIzvoda: AnalitikaIzvoda;
   selectedFiles: FileList;
   file: File;
   datum1: Date = new Date('MM/dd/yyyy');
   model: any = {};
-  date1 = new Date(this.model.datum_otvaranja);
-  nalogZaIsplatu: NovaIsplata = new NovaIsplata(
-    '',
-    '',
-    '',
-    null,
-    null,
-    0,
-    '',
-    this.date1,
-    0
-  );
+  date1 = new Date(this.model.datum_prijema);
+
+  nalogZaIsplatu: AnalitikaIzvoda = new AnalitikaIzvoda(0,"","","",this.date1,this.date1,null,0,"","",0,"",false,0,0,"",null);
   valuta: Valuta;
   racun_duznika: RacunLica;
   valute: Valuta[];
@@ -58,7 +50,7 @@ export class NalogZaIsplatuComponent implements OnInit {
   }
 
   noviNalogIsplataSubmit(forma: NgForm) {
-    this.getRacun();
+    
     this.nalogZaIsplatu.duznik = forma.value.duznik;
     this.nalogZaIsplatu.iznos = forma.value.iznos;
     this.nalogZaIsplatu.datum_prijema = forma.value.datum_prijema;
@@ -67,8 +59,8 @@ export class NalogZaIsplatuComponent implements OnInit {
     this.nalogZaIsplatu.poziv_na_brZ = forma.value.poziv_na_brZ;
     this.nalogZaIsplatu.svrha_placanja = forma.value.svrha_placanja;
     this.nalogZaIsplatu.valuta = this.valuta;
-    console.log(this.racun_duznika);
     this.nalogZaIsplatu.racun_duznika = this.racun_duznika;
+    console.log(this.nalogZaIsplatu);
     this.analitikaService.insertNalogZaIsplatu(this.nalogZaIsplatu).subscribe();
     forma.reset();
     this.location.back();
@@ -80,18 +72,12 @@ export class NalogZaIsplatuComponent implements OnInit {
     this.valuteService.getValute().subscribe(valute => (this.valute = valute));
   }
 
-  getRacun() {
-    this.racuniService
-      .getRacun(this.br_racuna)
-      .subscribe(
-        racun => {
-          this.racun_duznika = racun;
-        }
-      );
-  }
+ngOnInit() {
 
-  ngOnInit() {
-    this.getValute();
-    this.getRacuniLica();
-  }
+  this.getValute();
+  this.getRacuniLica();
+
 }
+}
+
+

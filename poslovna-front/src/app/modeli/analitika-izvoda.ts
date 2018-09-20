@@ -1,3 +1,6 @@
+import { Valuta } from "./valuta";
+import { RacunLica } from "./racunLica";
+
 export class AnalitikaIzvoda {
   constructor(
     public br_stavke: number,
@@ -6,7 +9,7 @@ export class AnalitikaIzvoda {
     public poverilac_primalac: string,
     public datum_prijema: Date,
     public datum_valute: Date,
-    public racun_duznika: string,
+    public racun_duznika: RacunLica,
     public model_zaduzenja: number,
     public poziv_na_brZ: string,
     public racun_poverioca: string,
@@ -16,6 +19,7 @@ export class AnalitikaIzvoda {
     public iznos: number,
     public tip_greske: number,
     public status: string,
+    public valuta: Valuta,
     public id?: number
   ) {}
 }

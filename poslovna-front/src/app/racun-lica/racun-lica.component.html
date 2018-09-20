@@ -7,26 +7,30 @@
           <th scope="col">Br racuna</th>
           <th scope="col">Datum otvaranja</th>
           <th scope="col">Klijent</th>
-         
+
+          <th scope="col"></th>
           <th scope="col"></th>
           <th scope="col"></th>
         </tr>
       </thead>
-      <tbody *ngFor="let racunShow of racuni">
+      <tbody *ngFor="let racun of racuni">
         <tr>
-          <th scope="row">{{racunShow.br_racuna}}</th>
-          <td>{{racunShow.datum_otvaranja}}</td>
-          <td>
-            {{racunShow.fizickoLice|json}}
-            {{racunShow.pravnoLice|json}}
+          <th scope="row">{{racun.br_racuna}}</th>
+          <td>{{racun.datum_otvaranja}}</td>
+          <td *ngIf="racun.fizickoLice != null">
+            {{racun.fizickoLice.naziv}}
           </td>
-          
-          <td>
-            <button class="btn btn-outline-warning" [routerLink]="['/racuni/' + racunShow.id]">Izmeni</button>
+          <td *ngIf="racun.pravnoLice != null">
+            {{racun.pravnoLice.naziv}}
           </td>
-          
           <td>
-            <button class="btn btn-outline-danger" (click)="deleteRacun(racunShow)">Obrisi</button>
+            <button class="btn btn-outline-warning" [routerLink]="['/racuni/' + racun.id]">Izmeni</button>
+          </td>
+          <td>
+            <button class="btn btn-outline-danger" (click)="deleteRacun(racun)">Obrisi</button>
+          </td>
+          <td>
+            <button class="btn btn-outline-success" [routerLink]="['/izvestaj/' + racun.id]">Izvestaj</button>
           </td>
         </tr>
       </tbody>

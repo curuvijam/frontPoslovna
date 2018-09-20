@@ -20,7 +20,7 @@
         <input type="text" id="poverilac_primalac" name="poverilac_primalac" class="bankslip__field-size--xxxl" required ngModel #poverilacPrimalac="ngModel">
       </div>
 
- 
+
       <div class="bankslip__form-item--currency">
         <div class="form-group">
           <label for="valuta">валута</label>
@@ -42,6 +42,7 @@
 
      <!-- <div class="bankslip__form-item--account">
         <label for="racun_duznika">рачун платиоца</label>
+<<<<<<< HEAD
         <input type="text" id="racun_duznika" name="racun_duznika" [(ngModel)]= "racunId" class="bankslip__field-size--xl bankslip-border-double">
       </div>-->
 
@@ -58,6 +59,9 @@
             <p>SELEKTOVANO: {{racun_duznika}}</p>
           </form>
         </div>
+=======
+        <input type="text" id="racun_duznika" name="racun_duznika" [(ngModel)]= "br_racuna" class="bankslip__field-size--xl bankslip-border-double">
+>>>>>>> d47bb2955afc2b7bc53976d3ad4d866148be56dd
       </div>
 
 
@@ -71,21 +75,29 @@
         <input type="text" id="poziv_na_brZ" name="poziv_na_brZ" class="bankslip__field-size--m bankslip-border-double" required ngModel #pozivNaBrz="ngModel">
       </div>
 
-      
+
       <div class="bankslip__form-item--date">
         <label for="datum_prijema">датум пријема</label>
         <input type="date" id="datum_prijema" name="datum_prijema" class="bankslip__field-size--s" required ngModel #datumPrijema="ngModel">
       </div>
 
-    
+
 
       <span class="bankslip__form-number">Образац бр. 1</span>
       <input type="text" class="bankslip__number" size="1" value="1">
 
+<<<<<<< HEAD
   
     <button type="submit" class="btn btn-primary" [disabled]="!novaForma.valid">Potvrdi</button> 
      
 
+=======
+
+        <button type="submit" class="btn btn-primary" [disabled]="!novaForma.valid">Potvrdi</button>
+      </form>
+    </div>
+  </form>
+>>>>>>> d47bb2955afc2b7bc53976d3ad4d866148be56dd
 </div>
 </form>
 </div>

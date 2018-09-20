@@ -22,8 +22,6 @@ export class RacunLicaComponent implements OnInit {
   racunId: string;
   racunEdit: RacunLica;
 
-
-
   getRacuniLica(): void{
     this.racuniService.getRacuni().subscribe(racuni => this.racuni = racuni);
   }

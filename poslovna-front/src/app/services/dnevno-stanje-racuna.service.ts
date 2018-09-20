@@ -24,6 +24,11 @@ export class DnevnoStanjeRacunaService {
     return this.http.get<DnevnoStanjeRacuna>(this.url + '/' + id);
   }
 
+  getDnevnoStanjeRacunaByRacun(id: string, pocetak: Date, kraj: Date): Observable<DnevnoStanjeRacuna[]> {
+    console.log(this.url + '/export/' + id + '/datumi?poc=' + pocetak + '&kraj=' + kraj);
+    return this.http.get<DnevnoStanjeRacuna[]>(this.url + '/export/' + id + '/datumi?poc=' + pocetak + '&kraj=' + kraj);
+  }
+
   insertDnevnoStanjeRacuna(kategorija: NovoDnevnoStanjeRacuna): Observable<NovoDnevnoStanjeRacuna> {
     return this.http.post<NovoDnevnoStanjeRacuna>(this.url, kategorija, httpOptions).pipe(
       catchError(this.handleError<NovoDnevnoStanjeRacuna>('insertStanje'))

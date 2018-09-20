@@ -12,7 +12,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { NovaIsplata } from '../modeli/nova-isplata';
 import { AnalitikaIzvoda } from '../modeli/analitika-izvoda';
 
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-type': 'application/json' })
 };
@@ -20,10 +19,10 @@ const httpOptions = {
 @Injectable()
 export class AnalitikaService {
   private url_analitikaFile = 'http://localhost:8080/analitikaFile';
-  private url_analitikaFileUplata ='http://localhost:8080/analitikaFileUplata';
+  private url_analitikaFileUplata = 'http://localhost:8080/analitikaFileUplata';
   private urlUplata = 'http://localhost:8080/analitikaUplata';
   private urlIsplata = 'http://localhost:8080/analitikaIsplata';
-  
+
   constructor(private http: HttpClient) {}
 
   loadFromFile(file: File): Observable<HttpEvent<{}>> {
@@ -46,14 +45,20 @@ export class AnalitikaService {
 
     formData.append('file', file);
 
-    const req = new HttpRequest('POST', this.url_analitikaFileUplata, formData, {
-      reportProgress: true,
-      responseType: 'text'
-    });
+    const req = new HttpRequest(
+      'POST',
+      this.url_analitikaFileUplata,
+      formData,
+      {
+        reportProgress: true,
+        responseType: 'text'
+      }
+    );
 
     return this.http.request(req);
   }
 
+<<<<<<< HEAD
   insertNalogZaUplatu(nalogzaUplatu: AnalitikaIzvoda): Observable<NovaUplata> {
     return this.http.post<AnalitikaIzvoda>(this.urlUplata, nalogzaUplatu, httpOptions).pipe(
       catchError(this.handleError<AnalitikaIzvoda>('insertNalogZaUplatu'))
@@ -64,6 +69,18 @@ export class AnalitikaService {
     return this.http.post<AnalitikaIzvoda>(this.urlIsplata, nalogZaIsplatu, httpOptions).pipe(
       catchError(this.handleError<AnalitikaIzvoda>('insertNalogZaIsplatu'))
     );
+=======
+  insertNalogZaUplatu(nalogzaUplatu: NovaUplata): Observable<NovaUplata> {
+    return this.http
+      .post<NovaUplata>(this.urlUplata, nalogzaUplatu, httpOptions)
+      .pipe(catchError(this.handleError<NovaUplata>('insertNalogZaUplatu')));
+  }
+
+  insertNalogZaIsplatu(nalogZaIsplatu: NovaIsplata): Observable<NovaIsplata> {
+    return this.http
+      .post<NovaIsplata>(this.urlIsplata, nalogZaIsplatu, httpOptions)
+      .pipe(catchError(this.handleError<NovaIsplata>('insertNalogZaIsplatu')));
+>>>>>>> d47bb2955afc2b7bc53976d3ad4d866148be56dd
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

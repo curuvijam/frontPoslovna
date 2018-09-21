@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-md-auto">
-    <h1>Racuni lica</h1>
+    <h1>Odaberi racun za prebacaj sredstava</h1>
     <table class="table table-striped table-hover table-dark">
       <thead>
         <tr>
@@ -24,16 +24,7 @@
             {{racun.pravnoLice.naziv}}
           </td>
           <td>
-            <button class="btn btn-outline-warning" [routerLink]="['/racuni/' + racun.id]">Izmeni</button>
-          </td>
-          <td>
-            <button class="btn btn-outline-danger" (click)="deleteRacun(racun)">Obrisi</button>
-          </td>
-          <td>
-            <button class="btn btn-outline-danger" [routerLink]="['/ukidanje-racuna/' + racun.id]">Ukini racun</button>
-          </td>
-          <td>
-            <button class="btn btn-outline-success" [routerLink]="['/izvestaj/' + racun.id]">Izvestaj</button>
+            <button class="btn btn-outline-warning" >Prebaci sredstva ovde</button>
           </td>
         </tr>
       </tbody>

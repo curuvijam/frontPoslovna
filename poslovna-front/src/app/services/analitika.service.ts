@@ -22,6 +22,7 @@ export class AnalitikaService {
   private url_analitikaFileUplata = 'http://localhost:8080/analitikaFileUplata';
   private urlUplata = 'http://localhost:8080/analitikaUplata';
   private urlIsplata = 'http://localhost:8080/analitikaIsplata';
+  private urlPrenos = 'http://localhost:8080/analitikaPrenos';
 
   constructor(private http: HttpClient) {}
 
@@ -69,6 +70,13 @@ export class AnalitikaService {
       catchError(this.handleError<AnalitikaIzvoda>('insertNalogZaIsplatu'))
     );
   }
+
+  insertNalogZaPrenos(nalogZaPrenos: AnalitikaIzvoda): Observable<AnalitikaIzvoda> {
+    return this.http.post<AnalitikaIzvoda>(this.urlIsplata, nalogZaPrenos, httpOptions).pipe(
+      catchError(this.handleError<AnalitikaIzvoda>('insertNalogZaPrenos'))
+    );
+  }
+
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

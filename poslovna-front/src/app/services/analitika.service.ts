@@ -18,8 +18,8 @@ const httpOptions = {
 
 @Injectable()
 export class AnalitikaService {
-  private url_analitikaFile = 'http://localhost:8080/analitikaFile';
-  private url_analitikaFileUplata = 'http://localhost:8080/analitikaFileUplata';
+  private url_analitikaFile = 'http://localhost:8080/loadAnalitikaIsplata';
+  private url_analitikaFileUplata = 'http://localhost:8080/loadAnalitikaUplata';
   private urlUplata = 'http://localhost:8080/analitikaUplata';
   private urlIsplata = 'http://localhost:8080/analitikaIsplata';
   private urlPrenos = 'http://localhost:8080/analitikaPrenos';
@@ -31,6 +31,7 @@ export class AnalitikaService {
     let formData: FormData = new FormData();
 
     formData.append('file', file);
+    console.log(file);
 
     const req = new HttpRequest('POST', this.url_analitikaFile, formData, {
       reportProgress: true,

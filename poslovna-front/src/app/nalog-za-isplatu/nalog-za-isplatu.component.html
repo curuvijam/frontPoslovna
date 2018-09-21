@@ -93,7 +93,7 @@
 
 <div class="container">
   <form name="form" (ngSubmit)="f.form.valid && upload()" class="register-form" #f="ngForm" novalidate>
-    <input type="file" accept="text/xml" name="fajl" (change)="onChange($event)" [(ngModel)]="file" required #fajl="ngModel">
+    <input type="file" accept="text/xml" name="fajl" (change)="onChange($event)">
     <button>Ucitaj nalog i obradi</button>
   </form>
 </div>

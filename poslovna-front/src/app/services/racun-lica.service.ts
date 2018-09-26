@@ -21,6 +21,7 @@ export class RacunLicaService {
   private url = 'http://localhost:8080/racuni';
   private url1 = 'http://localhost:8080/racuni/klijentFizicko';
   private url2 = 'http://localhost:8080/racuni/klijentPravno';
+  private urlPrenos = 'http://localhost:8080/analitikaPrenos';
 
   getRacuni(): Observable<RacunLica[]> {
     return this.http.get<RacunLica[]>(this.url);
@@ -57,13 +58,31 @@ export class RacunLicaService {
       .pipe(catchError(this.handleError<RacunLica>('updateRacun')));
   }
 
-  deleteRacun(racun: RacunLica | string): Observable<RacunLica> {
-    const id = typeof racun === 'string' ? racun : racun.id;
+  deleteRacun(racun: RacunLica | number): Observable<RacunLica> {
+    const id = typeof racun === 'number' ? racun : racun.id;
     const url = `${this.url}/${id}`;
 
     return this.http
       .delete<RacunLica>(url, httpOptions)
       .pipe(catchError(this.handleError<RacunLica>('deleteRacun')));
+  }
+
+  
+  deleteRacun2(racun: RacunLica | number): Observable<RacunLica> {
+    const id = typeof racun === 'number' ? racun : racun.id;
+    const urlPrenos = `${this.url}/${id}`;
+
+    return this.http
+      .delete<RacunLica>(urlPrenos, httpOptions)
+      .pipe(catchError(this.handleError<RacunLica>('deleteRacun2')));
+  }
+
+  ukiniRacun(racun: RacunLica | string): Observable<RacunLica>{
+    const id = typeof racun === 'string' ? racun : racun.id;
+    const url = `${this.url}/${id}`;
+    return this.http
+    .post<RacunLica>(url, httpOptions)
+    .pipe(catchError(this.handleError<RacunLica>('ukiniRacun')));
   }
 
   constructor(private http: HttpClient) {}

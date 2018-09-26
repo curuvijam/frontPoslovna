@@ -16,7 +16,7 @@
       <tbody *ngFor="let racun of racuni">
         <tr>
           <th scope="row">{{racun.br_racuna}}</th>
-          <td>{{racun.datum_otvaranja}}</td>
+          <td>{{racun.datum_otvaranja}} {{racun.id}}</td>
           <td *ngIf="racun.fizickoLice != null">
             {{racun.fizickoLice.naziv}}
           </td>
@@ -24,7 +24,7 @@
             {{racun.pravnoLice.naziv}}
           </td>
           <td>
-            <button class="btn btn-outline-warning" >Prebaci sredstva ovde</button>
+            <button class="btn btn-outline-warning" (click)="ukiniRacun(racun.id)" >Prebaci sredstva ovde</button>
           </td>
         </tr>
       </tbody>

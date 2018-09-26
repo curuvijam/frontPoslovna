@@ -72,8 +72,8 @@ export class AnalitikaService {
     );
   }
 
-  insertNalogZaPrenos(nalogZaPrenos: AnalitikaIzvoda): Observable<AnalitikaIzvoda> {
-    return this.http.post<AnalitikaIzvoda>(this.urlIsplata, nalogZaPrenos, httpOptions).pipe(
+  insertNalogZaPrenos(nalogZaPrenos: AnalitikaIzvoda, id: number): Observable<AnalitikaIzvoda> {
+    return this.http.post<AnalitikaIzvoda>(this.urlPrenos + '/' + id , nalogZaPrenos, httpOptions).pipe(
       catchError(this.handleError<AnalitikaIzvoda>('insertNalogZaPrenos'))
     );
   }

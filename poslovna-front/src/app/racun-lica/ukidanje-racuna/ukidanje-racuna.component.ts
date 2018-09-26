@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 import { RacunLica } from '../../modeli/racunLica';
 import { AnalitikaIzvoda } from '../../modeli/analitika-izvoda';
+import { AnalitikaService } from '../../services/analitika.service';
 
 @Component({
   selector: 'app-ukidanje-racuna',
@@ -24,7 +25,8 @@ analitikaPrenosa: AnalitikaIzvoda = new AnalitikaIzvoda(0,"","","",this.date1,th
   constructor(private racuniService: RacunLicaService,
               private location: Location,
               private route: ActivatedRoute,
-             ) { }
+              private analitikaService: AnalitikaService
+                         ) { }
 
 
     getRacuniLica(): void{
@@ -32,10 +34,28 @@ analitikaPrenosa: AnalitikaIzvoda = new AnalitikaIzvoda(0,"","","",this.date1,th
      }
               
     getRacun(){
-      this.racuniService.getRacun(this.racunId).subscribe((racun) => this.racunEdit = racun);
+      this.racuniService.getRacun(this.racunId).subscribe(
+        (racun) =>  {
+          this.analitikaPrenosa.racun_duznika = racun;
+          this.analitikaPrenosa.datum_prijema = new Date;
+          this.analitikaPrenosa.poverilac_primalac = '';
+        }
+      );
      }
                  
-     
+     ukiniRacun(id: number){
+       console.log(id);
+       this.getRacun();
+       console.log(this.analitikaPrenosa.racun_duznika);
+       this.analitikaService.insertNalogZaPrenos(this.analitikaPrenosa, id).subscribe();
+       
+     }
+
+     deleteRacun2(racun: RacunLica) {
+      this.racuniService.deleteRacun2(racun).subscribe();
+      this.racuni = this.racuni.filter(k => k !== racun);
+    }
+
   ngOnInit() {
     if(this.route.snapshot.params['racunId']){
       this.route.params.subscribe(
@@ -44,6 +64,8 @@ analitikaPrenosa: AnalitikaIzvoda = new AnalitikaIzvoda(0,"","","",this.date1,th
         }
       );
       this.getRacun();
+      
+      
     }
     this.getRacuniLica();
 }

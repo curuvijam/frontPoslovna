@@ -58,7 +58,7 @@ const routes: Routes = [
   { path: 'kursna-lista', component: KursnaListaComponent},
   {path:  'nalogZaUplatu', component: NalogZaUplatuComponent},
   {path: 'izvestaj/:racunId', component: IzvestajComponent},
-  {path: 'ukidanje-racuna/:racunId', component: UkidanjeRacunaComponent},
+  {path: 'analitikaPrenos/:racunId', component: UkidanjeRacunaComponent},
   {path: 'clearing', component: ClearingComponent}
 
 

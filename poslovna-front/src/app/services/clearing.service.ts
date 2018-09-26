@@ -15,7 +15,7 @@ export class ClearingService {
 
   private url = 'http://localhost:8080/banka';
   private url1 = 'http://localhost:8080/obradiClearing'
-  private url2 = 'http://localhost:8080/getClearing'
+  private url2 = 'http://localhost:8080/getClearings'
 
   getBanke(): Observable<Banka[]> {
     return this.http.get<Banka[]>(this.url);

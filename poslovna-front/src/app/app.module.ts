@@ -39,6 +39,7 @@ import { NalogZaUplatuComponent } from './nalog-za-uplatu/nalog-za-uplatu.compon
 import { IzvestajComponent } from './izvestaj/izvestaj.component';
 import { UkidanjeRacunaComponent } from './racun-lica/ukidanje-racuna/ukidanje-racuna.component';
 import { ClearingService } from './services/clearing.service';
+import { ClearingComponent } from './clearing/clearing.component';
 
 
 
@@ -66,7 +67,8 @@ import { ClearingService } from './services/clearing.service';
     KursValutiComponent,
     NalogZaUplatuComponent,
     IzvestajComponent,
-    UkidanjeRacunaComponent
+    UkidanjeRacunaComponent,
+    ClearingComponent
   ],
   imports: [
     BrowserModule,

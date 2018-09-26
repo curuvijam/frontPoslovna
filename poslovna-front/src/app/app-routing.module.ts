@@ -16,15 +16,10 @@ import { LoginComponent } from './login/login.component';
 import { KursValutiComponent } from './kurs-valuti/kurs-valuti.component';
 import { KursnaListaComponent } from './kursna-lista/kursna-lista.component';
 import { NalogZaUplatuComponent } from './nalog-za-uplatu/nalog-za-uplatu.component';
-<<<<<<< HEAD
 import { ClearingComponent } from './clearing/clearing.component';
 import { IzvestajComponent } from './izvestaj/izvestaj.component';
 import { UkidanjeRacunaComponent } from './racun-lica/ukidanje-racuna/ukidanje-racuna.component';
 
-=======
-import { IzvestajComponent } from './izvestaj/izvestaj.component';
-import { UkidanjeRacunaComponent } from './racun-lica/ukidanje-racuna/ukidanje-racuna.component';
->>>>>>> 6fa94f7745e35a8b300dc6ee38765650eac62c54
 
 
 const routes: Routes = [
@@ -63,7 +58,8 @@ const routes: Routes = [
   { path: 'kursna-lista', component: KursnaListaComponent},
   {path:  'nalogZaUplatu', component: NalogZaUplatuComponent},
   {path: 'izvestaj/:racunId', component: IzvestajComponent},
-  {path: 'ukidanje-racuna/:racunId', component: UkidanjeRacunaComponent}
+  {path: 'ukidanje-racuna/:racunId', component: UkidanjeRacunaComponent},
+  {path: 'clearing', component: ClearingComponent}
 
 
 ];

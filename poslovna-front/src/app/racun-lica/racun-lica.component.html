@@ -15,10 +15,10 @@
       <tbody *ngFor="let racunShow of racuni">
         <tr>
           <th scope="row">{{racunShow.br_racuna}}</th>
-          <td>{{racunShow.datum_otvaranja}}</td>
+          <td>{{racunShow.datum_otvaranja | date :  "dd.MM.y"}}</td>
           <td>
-            {{racunShow.fizickoLice|json}}
-            {{racunShow.pravnoLice|json}}
+            {{racunShow.fizickoLice.naziv}}
+            
           </td>
           
           <td>

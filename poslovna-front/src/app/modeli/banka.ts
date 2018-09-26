@@ -1,3 +1,5 @@
+import { Clearing } from "./clearing";
+
 
 export class Banka{
     constructor(
@@ -12,7 +14,8 @@ export class Banka{
       public fax: String,
       public banka: boolean,
       public swif_kod: String,
-      public obracunski_racun: String
-        
+      public obracunski_racun: String,
+      public aktivanClearing: Clearing
+      
     ){}
 }

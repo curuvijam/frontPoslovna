@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="col-md-auto">
+    <h1>Aktivan clearing</h1>
+    <form #aktivanClearingForm="ngForm" (ngSubmit)="getAktivanClearing()">
+    <table class="table table-striped table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Id poruke</th>
+          <th scope="col">Ukupan iznos</th>
+          <th scope="col">Datum </th>
+          <th></th>
+         
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{bankaEdit?.aktivanClearing.id}}</th>
+          <td>{{bankaEdit?.aktivanClearing.id_poruke}}</td>
+          <td>{{bankaEdit?.aktivanClearing.ukupan_iznos}}</td>
+          <td>{{bankaEdit?.aktivanClearing.datum}}</td>
+          <td>
+            <button type="submit" class="btn btn-outline-success" >Obradi Clearing</button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+    </form>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="col-md-auto">
+    <h1>Aktivan clearing</h1>
+    <form #aktivanClearingForm="ngForm" (ngSubmit)="getObradjenClearing()">
+    <table class="table table-striped table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Id poruke</th>
+          <th scope="col">Ukupan iznos</th>
+          <th scope="col">Datum </th>
+          <th></th>
+         
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{bankaEdit?.aktivanClearing.id}}</th>
+          <td>{{bankaEdit?.aktivanClearing.id_poruke}}</td>
+          <td>{{bankaEdit?.aktivanClearing.ukupan_iznos}}</td>
+          <td>{{bankaEdit?.aktivanClearing.datum}}</td>
+          <td>
+            <button type="submit" class="btn btn-outline-success" >Obradi Clearing</button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+    </form>
+  </div>
+</div>
+

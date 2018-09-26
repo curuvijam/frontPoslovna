@@ -1,19 +1,45 @@
-<a class="list-group-item clearfix" *ngFor="let valuteShow of valute">
-  <div class="pull-left">
-    <h2 class="list-group-item-heading" > ID valute : {{valuteShow.id_valute}}</h2>
-    <h2 class="list-group-item-heading" > Sifra : {{valuteShow.sifra}}</h2>
-    <h2 class="list-group-item-heading" > Naziv : {{valuteShow.naziv}}</h2>
-    <h2 class="list-group-item-heading" > Domicilna : {{valuteShow.domicilna}}</h2>
-  
-  
-   
-    <span class="pull-right"> 
-    <button class="btn btn-primary" [routerLink]="['/valute/' + valuteShow.id]">Izmeni</button> 
-      <button class="button-danger" (click)="deleteValuta(valuteShow)">Obrisi</button> 
-    </span>
+<div class="container">
+  <div class="col-md-auto">
+    <h1>Valute</h1>
+    <form #aktivanClearingForm="ngForm" (ngSubmit)="getObradjenClearing()">
+    <table class="table table-striped table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Id valute</th>
+          <th scope="col">Sifra</th>
+          <th scope="col">Naziv</th>
+          <th scope="col">Domicilna </th>
+          <th></th>
+          <th></th>
+          <th></th>
+         
+          
+        </tr>
+      </thead>
+      <tbody *ngFor="let valuteShow of valute">
+        <tr>
+          <th scope="row">{{valuteShow.id_valute}}</th>
+          <td>{{valuteShow.sifra}}</td>
+          <td>{{valuteShow.naziv}}</td>
+          <td>{{valuteShow.domicilna}}</td>
+          <td>
+            <button class="btn btn-outline-success" routerLink="/valute-edit">Dodaj valutu</button>
+          </td>
+          <td>
+            <button class="btn btn-outline-warning" [routerLink]="['/valute/' + valuteShow.id]">Izmeni</button>
+          </td>
+          <td>
+            <button class="btn btn-outline-danger" (click)="deleteValuta(valuteShow)">Obrisi</button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+    </form>
   </div>
-</a>
-<button class="btn btn-primary" routerLink="/valute-edit">Dodaj valutu</button>
+</div>
+
+
 
 
 

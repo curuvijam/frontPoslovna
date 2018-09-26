@@ -1,16 +1,48 @@
-<a class="list-group-item clearfix" *ngFor="let drzaveShow of drzave">
-  <div class="pull-left">
-    <h1 class="list-group-item-heading" > Sifra : {{drzaveShow.sifra_drzave}}</h1>
-    <h2 class="list-group-item-heading" > Naziv : {{drzaveShow.naziv}}</h2>
-  
-   
-    <span class="pull-right"> 
-      <button class="btn btn-primary" [routerLink]="['/drzave/' + drzaveShow.id]">Izmeni</button>
-      <button class="button-danger" (click)="deleteDrzava(drzaveShow)">Obrisi</button>
-    </span>
+<div class="container">
+  <div class="col-md-auto">
+    <h1>Naseljena mesta</h1>
+    <form #aktivanClearingForm="ngForm" (ngSubmit)="getNaseljenaMesta()">
+    <table class="table table-striped table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Sifra</th>
+          <th scope="col">Naziv</th>
+          <th></th>
+          <th></th>
+          <th></th>
+         
+          
+        </tr>
+      </thead>
+      <tbody *ngFor="let drzaveShow of drzave">
+        <tr>
+          <th scope="row">{{drzaveShow.sifra_drzave}}</th>
+          <td>{{drzaveShow.naziv}}</td>
+          
+          <td>
+            <button class="btn btn-outline-success" routerLink="/drzave-edit">Dodaj drzavu</button>
+
+          </td>
+          <td>
+            <button class="btn btn-outline-warning" [routerLink]="['/drzave/' + drzaveShow.id]">Izmeni</button>
+          </td>
+          <td>
+            <button class="btn btn-outline-danger" (click)="deleteDrzava(drzaveShow)">Obrisi</button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+    </form>
   </div>
-</a>
-<button class="btn btn-primary" routerLink="/drzave-edit">Dodaj drzavu</button>
+</div>
+
+
+
+
+
+
+
 
 
 

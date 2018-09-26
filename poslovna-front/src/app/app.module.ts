@@ -36,6 +36,8 @@ import { KursValutiService } from './services/kurs-valuti.service';
 import { DnevnoStanjeRacunaService } from './services/dnevno-stanje-racuna.service';
 import { BankaService } from './services/banka.service';
 import { NalogZaUplatuComponent } from './nalog-za-uplatu/nalog-za-uplatu.component';
+import { ClearingComponent } from './clearing/clearing.component';
+import { ClearingService } from './services/clearing.service';
 
 
 
@@ -61,7 +63,8 @@ import { NalogZaUplatuComponent } from './nalog-za-uplatu/nalog-za-uplatu.compon
     LoginComponent,
     KursnaListaComponent,
     KursValutiComponent,
-    NalogZaUplatuComponent
+    NalogZaUplatuComponent,
+    ClearingComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +85,8 @@ import { NalogZaUplatuComponent } from './nalog-za-uplatu/nalog-za-uplatu.compon
     KursValutiService,
     AnalitikaService,
     DnevnoStanjeRacunaService,
-    BankaService
+    BankaService,
+    ClearingService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,12 +1,33 @@
-<a class="list-group-item clearfix" *ngFor="let drzaveShow of kursneListe">
-  <div class="pull-left">
-    <h1 class="list-group-item-heading" > Datum : {{drzaveShow.datum}}</h1>
-    <h2 class="list-group-item-heading" > Broj : {{drzaveShow.br_kursnel}}</h2>
-    <h2 class="list-group-item-heading" > Primena od : {{drzaveShow.primena_od}}</h2>
-  
+
+
+<div class="container">
+  <div class="col-md-auto">
+    <h1>Kursne</h1>
+    
+      <table class="table table-striped table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Datum</th>
+            <th scope="col">Broj</th>
+            <th scope="col">Primena od</th>
+            
+            
+
+
+          </tr>
+        </thead>
+        <tbody *ngFor="let kursneListeShow of kursneListe">
+          <tr>
+            <th scope="row">{{kursneListeShow.datum | date :  "dd.MM.y"}}</th>
+            <td>{{kursneListeShow.br_kursnel}}</td>
+            <td>{{kursneListeShow.primena_od | date :  "dd.MM.y"}}</td>
+           
+
+
+
+          </tr>
+        </tbody>
+      </table>
    
-    <span class="pull-right"> 
-     
-    </span>
   </div>
-</a>
+</div>

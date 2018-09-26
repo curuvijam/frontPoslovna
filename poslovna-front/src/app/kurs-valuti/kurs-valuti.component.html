@@ -1,14 +1,31 @@
-<a class="list-group-item clearfix" *ngFor="let drzaveShow of kursVal">
-  <div class="pull-left">
-    <h1 class="list-group-item-heading" > Redni broj : {{drzaveShow.redni_br}}</h1>
-    <h2 class="list-group-item-heading" > kupovni : {{drzaveShow.kupovni}}</h2>
-    <h2 class="list-group-item-heading" > srednji : {{drzaveShow.srednji}}</h2>
-    <h2 class="list-group-item-heading" > prodajni : {{drzaveShow.prodajni}}</h2>
+<div class="container">
+  <div class="col-md-auto">
+    <h1>Kurs u valuti</h1>
     
-  
+      <table class="table table-striped table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Redni broj</th>
+            <th scope="col">Kupovni</th>
+            <th scope="col">Srednji</th>
+            <th scope="col">Prodajni</th>
+            
+
+
+          </tr>
+        </thead>
+        <tbody *ngFor="let kursShow of kursVal">
+          <tr>
+            <th scope="row">{{kursShow.redni_br}}</th>
+            <td>{{kursShow.kupovni}}</td>
+            <td>{{kursShow.srednji}}</td>
+            <td>{{kursShow.prodajni}}</td>
+
+
+
+          </tr>
+        </tbody>
+      </table>
    
-    <span class="pull-right"> 
-     
-    </span>
   </div>
-</a>
+</div>

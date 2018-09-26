@@ -1,17 +1,47 @@
-<a class="list-group-item clearfix" *ngFor="let naseljenaMestaShow of naseljenaMesta">
-  <div class="pull-left">
-    <h1 class="list-group-item-heading" > Sifra : {{naseljenaMestaShow.sifra_mesta}}</h1>
-    <h2 class="list-group-item-heading" > Naziv : {{naseljenaMestaShow.naziv}}</h2>
-    <h2 class="list-group-item-heading" > Ptt oznaka : {{naseljenaMestaShow.ptt_oznaka}}</h2>
-    <h2 class="list-group-item-heading" > Drzava : {{naseljenaMestaShow.drzava|json}}</h2>
-  
-    <span class="pull-right"> 
-      <button class="btn btn-primary" [routerLink]="['/naseljena-mesta/' + naseljenaMestaShow.id]">Izmeni</button>
-      <button class="button-danger" (click)="deleteNaseljenoMesto(naseljenaMestaShow)">Obrisi</button>
-      
-    </span>
+<div class="container">
+  <div class="col-md-auto">
+    <h1>Naseljena mesta</h1>
+    <form #aktivanClearingForm="ngForm" (ngSubmit)="getObradjenClearing()">
+    <table class="table table-striped table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Sifra</th>
+          <th scope="col">Naziv</th>
+          <th scope="col">Ptt oznaka</th>
+          <th scope="col">Drzava </th>
+          <th></th>
+          <th></th>
+          <th></th>
+         
+          
+        </tr>
+      </thead>
+      <tbody *ngFor="let naseljenaMestaShow of naseljenaMesta">
+        <tr>
+          <th scope="row">{{naseljenaMestaShow.sifra_mesta}}</th>
+          <td>{{naseljenaMestaShow.naziv}}</td>
+          <td>{{naseljenaMestaShow.ptt_oznaka}}</td>
+          <td>{{naseljenaMestaShow.drzava.naziv}}</td>
+          <td>
+            <button class="btn btn-outline-success" routerLink="/naseljena-mesta-edit">Dodaj naseljeno mesto</button>
+
+          </td>
+          <td>
+            <button class="btn btn-outline-warning" [routerLink]="['/naseljena-mesta/' + naseljenaMestaShow.id]">Izmeni</button>
+          </td>
+          <td>
+            <button class="btn btn-outline-danger" (click)="deleteNaseljenoMesto(naseljenaMestaShow)">Obrisi</button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+    </form>
   </div>
-</a>
-<button class="btn btn-primary" routerLink="/naseljena-mesta-edit">Dodaj naseljeno mesto</button>
+</div>
+
+
+
+
 
 

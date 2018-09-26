@@ -22,20 +22,19 @@ export class RacunLicaComponent implements OnInit {
   racunId: string;
   racunEdit: RacunLica;
 
-
-
-  getRacuniLica(): void{
+  getRacuniLica(): void {
     this.racuniService.getRacuni().subscribe(racuni => this.racuni = racuni);
+    console.log(this.racuni);
   }
 
-  getRacun(){
+  getRacun() {
     this.racuniService.getRacun(this.racunId).subscribe((racun) => this.racunEdit = racun);
   }
 
 
-  deleteRacun(racun: RacunLica){
+  deleteRacun(racun: RacunLica) {
     this.racuniService.deleteRacun(racun).subscribe();
-    this.racuni = this.racuni.filter(k => k!== racun);
+    this.racuni = this.racuni.filter(k => k !== racun);
   }
 
   constructor(private racuniService: RacunLicaService, private location: Location,
